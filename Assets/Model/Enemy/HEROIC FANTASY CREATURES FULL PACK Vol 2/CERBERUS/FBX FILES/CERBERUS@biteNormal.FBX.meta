@@ -1,0 +1,187 @@
+fileFormatVersion: 2
+guid: 420c1612848da6048a4c66d52c899d4c
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CERBERUS_
+    100004: CERBERUS_ Head
+    100006: CERBERUS_ L Calf
+    100008: CERBERUS_ L Clavicle
+    100010: CERBERUS_ L Finger0
+    100012: CERBERUS_ L Finger01
+    100014: CERBERUS_ L Foot
+    100016: CERBERUS_ L Forearm
+    100018: CERBERUS_ L Hand
+    100020: CERBERUS_ L HorseLink
+    100022: CERBERUS_ L Thigh
+    100024: CERBERUS_ L Toe0
+    100026: CERBERUS_ L UpperArm
+    100028: CERBERUS_ Neck
+    100030: CERBERUS_ Neck1
+    100032: CERBERUS_ Pelvis
+    100034: CERBERUS_ Queue de cheval 1
+    100036: CERBERUS_ R Calf
+    100038: CERBERUS_ R Clavicle
+    100040: CERBERUS_ R Finger0
+    100042: CERBERUS_ R Finger01
+    100044: CERBERUS_ R Foot
+    100046: CERBERUS_ R Forearm
+    100048: CERBERUS_ R Hand
+    100050: CERBERUS_ R HorseLink
+    100052: CERBERUS_ R Thigh
+    100054: CERBERUS_ R Toe0
+    100056: CERBERUS_ R UpperArm
+    100058: CERBERUS_ Spine
+    100060: CERBERUS_ Spine1
+    100062: CERBERUS_ Spine2
+    100064: CERBERUS_ Spine3
+    100066: CERBERUS_ Tail
+    100068: CERBERUS_ Tail1
+    100070: CERBERUS_ Tail2
+    100072: CERBERUS_ Tail3
+    100074: CERBERUS_ Tail4
+    100076: CERBERUS_ Tail5
+    100078: CERBERUS_ Tail6
+    100080: CERBERUS_ Tail7
+    100082: CERBERUS_L_HEAD
+    100084: CERBERUS_L_JAW
+    100086: CERBERUS_L_NECK_1
+    100088: CERBERUS_L_NECK_2
+    100090: CERBERUS_R_HEAD
+    100092: CERBERUS_R_JAW
+    100094: CERBERUS_R_NECK_1
+    100096: CERBERUS_R_NECK_2
+    400000: //RootNode
+    400002: CERBERUS_
+    400004: CERBERUS_ Head
+    400006: CERBERUS_ L Calf
+    400008: CERBERUS_ L Clavicle
+    400010: CERBERUS_ L Finger0
+    400012: CERBERUS_ L Finger01
+    400014: CERBERUS_ L Foot
+    400016: CERBERUS_ L Forearm
+    400018: CERBERUS_ L Hand
+    400020: CERBERUS_ L HorseLink
+    400022: CERBERUS_ L Thigh
+    400024: CERBERUS_ L Toe0
+    400026: CERBERUS_ L UpperArm
+    400028: CERBERUS_ Neck
+    400030: CERBERUS_ Neck1
+    400032: CERBERUS_ Pelvis
+    400034: CERBERUS_ Queue de cheval 1
+    400036: CERBERUS_ R Calf
+    400038: CERBERUS_ R Clavicle
+    400040: CERBERUS_ R Finger0
+    400042: CERBERUS_ R Finger01
+    400044: CERBERUS_ R Foot
+    400046: CERBERUS_ R Forearm
+    400048: CERBERUS_ R Hand
+    400050: CERBERUS_ R HorseLink
+    400052: CERBERUS_ R Thigh
+    400054: CERBERUS_ R Toe0
+    400056: CERBERUS_ R UpperArm
+    400058: CERBERUS_ Spine
+    400060: CERBERUS_ Spine1
+    400062: CERBERUS_ Spine2
+    400064: CERBERUS_ Spine3
+    400066: CERBERUS_ Tail
+    400068: CERBERUS_ Tail1
+    400070: CERBERUS_ Tail2
+    400072: CERBERUS_ Tail3
+    400074: CERBERUS_ Tail4
+    400076: CERBERUS_ Tail5
+    400078: CERBERUS_ Tail6
+    400080: CERBERUS_ Tail7
+    400082: CERBERUS_L_HEAD
+    400084: CERBERUS_L_JAW
+    400086: CERBERUS_L_NECK_1
+    400088: CERBERUS_L_NECK_2
+    400090: CERBERUS_R_HEAD
+    400092: CERBERUS_R_JAW
+    400094: CERBERUS_R_NECK_1
+    400096: CERBERUS_R_NECK_2
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.005
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5feefcc4dbedc544e9c3334b1d575dc3,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

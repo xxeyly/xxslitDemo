@@ -1,0 +1,687 @@
+fileFormatVersion: 2
+guid: 6a419d64fc1cefe4aab14c456e637ebb
+timeCreated: 1522228577
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BigScaleAtlas_0
+    21300002: BigScaleAtlas_1
+    21300004: BigScaleAtlas_2
+    21300006: BigScaleAtlas_3
+    21300008: BigScaleAtlas_4
+    21300010: BigScaleAtlas_5
+    21300012: BigScaleAtlas_6
+    21300014: BigScaleAtlas_7
+    21300016: BigScaleAtlas_8
+    21300018: BigScaleAtlas_9
+    21300020: BigScaleAtlas_10
+    21300022: BigScaleAtlas_11
+    21300024: BigScaleAtlas_12
+    21300026: BigScaleAtlas_13
+    21300028: BigScaleAtlas_14
+    21300030: BigScaleAtlas_15
+    21300032: BigScaleAtlas_16
+    21300034: BigScaleAtlas_17
+    21300036: BigScaleAtlas_18
+    21300038: BigScaleAtlas_19
+    21300040: BigScaleAtlas_20
+    21300042: BigScaleAtlas_21
+    21300044: BigScaleAtlas_22
+    21300046: BigScaleAtlas_23
+    21300048: BigScaleAtlas_24
+    21300050: BigScaleAtlas_25
+    21300052: BigScaleAtlas_26
+    21300054: BigScaleAtlas_27
+    21300056: BigScaleAtlas_28
+    21300058: BigScaleAtlas_29
+    21300060: BigScaleAtlas_30
+    21300062: BigScaleAtlas_31
+    21300064: BigScaleAtlas_32
+    21300066: BigScaleAtlas_33
+    21300068: BigScaleAtlas_34
+    21300070: BigScaleAtlas_35
+    21300072: BigScaleAtlas_36
+    21300074: BigScaleAtlas_37
+    21300076: BigScaleAtlas_38
+    21300078: BigScaleAtlas_39
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BigScaleAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 966
+        width: 338
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 985
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 985
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 912
+        width: 71
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 983
+        width: 87
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 983
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 987
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 903
+        width: 5
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 903
+        width: 5
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_9
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 946
+        width: 68
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 945
+        width: 128
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 945
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_12
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 881
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_13
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 883
+        width: 227
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_14
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 912
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 881
+        width: 338
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_16
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 670
+        width: 245
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 670
+        width: 339
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_18
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 865
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_19
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 865
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_20
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 800
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_21
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 787
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_22
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 787
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_23
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 688
+        width: 298
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_24
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 735
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_25
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 766
+        width: 50
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_26
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 670
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_27
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 718
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_28
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 718
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_29
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 718
+        width: 29
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_30
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 718
+        width: 29
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_31
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 189
+        width: 335
+        height: 493
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_32
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 670
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_33
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 670
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_34
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 670
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 407
+        height: 669
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_36
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 0
+        width: 407
+        height: 669
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_37
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 268
+        width: 321
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_38
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 196
+        width: 305
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BigScaleAtlas_39
+      rect:
+        serializedVersion: 2
+        x: 1744
+        y: 198
+        width: 298
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
