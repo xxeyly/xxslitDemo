@@ -4,20 +4,21 @@
 		"questReleaseNpc": "村长",
 		"questBriefIntroduction": "保卫村庄",
 		"questSescribe": "村子最近老是受到野狼的骚扰,请勇士去击杀20只野狼,并收集一些野狼的材料吧!",
-		"questDialogueNpc": [ "你好啊,冒险家", "最近村子收到了野狼的骚扰,伤着不是村民,不知勇士愿意接受这个任务吗?" ],
-		"questDialoguePlayer": [ "有什么需要帮助的吗?" ],
+		"questDialogueNpc": ["你好啊,冒险家", "最近村子收到了野狼的骚扰,伤着不是村民,不知勇士愿意接受这个任务吗?"],
+		"questDialoguePlayer": ["有什么需要帮助的吗?"],
 		"questUnfinished": "快去村外击杀野狼吧!",
-		"questBranch": [ 2 ],
+		"questBranch": [2],
 		"questLevelLimit": 5,
-		"questTalkNPC": [ "" ],
+		"questTalkNPC": [""],
 		"questAccept": false,
 		"questState": false,
 		"questSubmit": false,
 		"questKillEnemy": [
 			{
-				"enemyId": 1,
-				"enemyNumber": 20
-			}
+				"enemyId": 0,
+				"enemyNumber": 20,
+				"currentEnemyNumber": 0
+					}
 		],
 		"questItem": [
 			{
