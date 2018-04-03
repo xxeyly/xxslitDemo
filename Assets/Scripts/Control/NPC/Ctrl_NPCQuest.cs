@@ -9,30 +9,20 @@ public class Ctrl_NPCQuest : MonoBehaviour
 
     public int[] Quests
     {
-        get
-        {
-            return quests;
-        }
+        get { return quests; }
 
-        set
-        {
-            quests = value;
-        }
+        set { quests = value; }
     }
 
     public List<Model_Quest> QuestList
     {
-        get
-        {
-            return questList;
-        }
+        get { return questList; }
 
-        set
-        {
-            questList = value;
-        }
+        set { questList = value; }
     }
-
+    /// <summary>
+    /// 初始化任务数据
+    /// </summary>
     private void Start()
     {
         QuestList = new List<Model_Quest>();
@@ -43,7 +33,9 @@ public class Ctrl_NPCQuest : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 鼠标点击时,把当前挂载着并且未提交的任务更新到Quest_Tootip中
+    /// </summary>
     private void OnMouseDown()
     {
         foreach (Model_Quest quest in QuestList)
@@ -56,4 +48,8 @@ public class Ctrl_NPCQuest : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+
+    }
 }
