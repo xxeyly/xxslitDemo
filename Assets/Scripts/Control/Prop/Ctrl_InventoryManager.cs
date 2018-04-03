@@ -10,6 +10,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
     public GameObject Tootip;
     public GameObject PickUpItem;
     public bool isToolTipShow = false;
+    public bool IsPickedItem { get; set; }
 
     //Tootip偏移
     private Vector2 toolTipPosionOffset = new Vector2(10, -10);
@@ -35,6 +36,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
     {
         get { return Ctrl_SlotManager.Instance.SlotList; }
     }
+
     /// <summary>
     /// 获得已经存在的物品格子,并且未满
     /// </summary>
@@ -43,6 +45,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
     {
         return Ctrl_SlotManager.Instance.GetUnfilledMaxSlot();
     }
+
     /// <summary>
     /// 获得相同物品未满的格子
     /// </summary>
@@ -52,6 +55,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
     {
         return Ctrl_SlotManager.Instance.GetIdenticalSlot(item);
     }
+
     /// <summary>
     /// 返回已经存个相同物品的格子的剩余数量之和
     /// </summary>
@@ -61,6 +65,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
     {
         return Ctrl_SlotManager.Instance.GetIdenticaAmount(item);
     }
+
     /// <summary>
     /// 获得空的格子
     /// </summary>
@@ -69,7 +74,6 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
         get { return Ctrl_SlotManager.Instance.GetEmptySlot(); }
     }
 
-    public bool IsPickedItem { get; set; }
 
     public List<Model_Item> ItemList
     {
@@ -138,6 +142,15 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
         }
     }
 
+    /// <summary>
+    /// 获得背包中存在多少个指定ID的物品
+    /// </summary>
+    /// <param name="itemId"></param>
+    /// <returns></returns>
+    public int GetItemCount(int itemId)
+    {
+        return Ctrl_SlotManager.Instance.GetItemCount(itemId);
+    }
 
     protected override void Awake()
     {
