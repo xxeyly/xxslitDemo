@@ -93,6 +93,10 @@ public class Ctrl_SlotManager : Singleton<Ctrl_SlotManager>
         slotList = gameObject.GetComponentsInChildren<Ctrl_Slot>();
     }
 
+    /// <summary>
+    /// 获得空的格子
+    /// </summary>
+    /// <returns></returns>
     public Ctrl_Slot GetEmptySlot()
     {
         for (int i = 0; i < slotList.Length; i++)
@@ -104,6 +108,28 @@ public class Ctrl_SlotManager : Singleton<Ctrl_SlotManager>
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// 获得背包中存在多少个指定ID的物品
+    /// </summary>
+    /// <param name="itemId"></param>
+    /// <returns></returns>
+    public int GetItemCount(int itemId)
+    {
+        int amount = 0;
+        if (activeSlot != null)
+        {
+            foreach (Ctrl_Slot slot in activeSlot)
+            {
+                if (slot.Item.id==itemId)
+                {
+                    amount += slot.Item.currentNumber;
+                }
+            }
+        }
+
+        return amount;
     }
 
     void Update()
