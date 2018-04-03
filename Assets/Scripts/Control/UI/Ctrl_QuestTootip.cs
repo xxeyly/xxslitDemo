@@ -90,6 +90,7 @@ public class Ctrl_QuestTootip : MonoBehaviour
         Quest.questSubmit = false;
         Ctrl_TootipManager.Instance.HideQuest();
         Ctrl_TootipManager.Instance.ShowNotification(quest.questBriefIntroduction, 1f, "接受任务");
+        Ctrl_PlayerQuest.Instance.PlayQuestList.Add(quest);
     }
 
     /// <summary>
