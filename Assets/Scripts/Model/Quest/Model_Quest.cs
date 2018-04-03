@@ -24,6 +24,7 @@ public class Model_Quest : MonoBehaviour
     {
         public int enemyId;//击杀的怪物类型
         public int enemyNumber;//击杀的怪物数量
+        public int currentEnemyNumber;//当前击杀数量
     }
 
     public class QuestItem
