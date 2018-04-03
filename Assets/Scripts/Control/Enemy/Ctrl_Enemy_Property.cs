@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Ctrl_Enemy_Property : MonoBehaviour
 {
+    [SerializeField] private int enemyId;
     [SerializeField] private int intMaxHealth = 1000;
     [SerializeField] private int intCurrentHealth;
     [SerializeField] public int intDefender = 20;
@@ -62,21 +63,42 @@ public class Ctrl_Enemy_Property : MonoBehaviour
             IntCurrentHealth -= (hurtNumber - 20);
             if (IntCurrentHealth <= 0)
             {
+                //死亡取消碰撞器
+                GetComponent<CharacterController>().enabled = false;
                 _CurrentState = GlobalParametr.SimplyEnemyState.Death;
                 //角色增加经验值
                 Ctrl_HeroProperty.Instance.UpgradeConition(GetComponent<Ctrl_Enemy_DropProperty>().RewardExp);
                 //角色增加金币
                 Ctrl_HeroProperty.Instance.AddGold(GetComponent<Ctrl_Enemy_DropProperty>().RewardGold);
                 //角色增加物品
-                foreach (Ctrl_Enemy_DropProperty.EnemyDropItem enemyDropItem in GetComponent<Ctrl_Enemy_DropProperty>().RewardItems)
+                foreach (Ctrl_Enemy_DropProperty.EnemyDropItem enemyDropItem in GetComponent<Ctrl_Enemy_DropProperty>()
+                    .RewardItems)
                 {
                     for (int i = 0; i < enemyDropItem.number; i++)
                     {
                         Ctrl_InventoryManager.Instance.AddItem(enemyDropItem.item);
                     }
                 }
+
                 //增加杀敌数量
                 Ctrl_HeroProperty.Instance.AddKillnumber();
+                //当前接受的任务中,击杀怪物中包含本身,并且当前任务不是提交状态,增加击杀个数
+                foreach (Model_Quest quest in Ctrl_PlayerQuest.Instance.PlayQuestList)
+                {
+                    if (!quest.questSubmit)
+                    {
+                        foreach (Model_Quest.QuestEnemy enemy in quest.questKillEnemy)
+                        {
+                            if (enemy.enemyId == enemyId)
+                            {
+                                if (enemy.currentEnemyNumber < enemy.enemyNumber)
+                                {
+                                    enemy.currentEnemyNumber++;
+                                }
+                            }
+                        }
+                    }
+                }
 
                 StartCoroutine(WaitTimeDestroy());
             }
