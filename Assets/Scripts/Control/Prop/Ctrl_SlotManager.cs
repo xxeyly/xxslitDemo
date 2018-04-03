@@ -118,11 +118,11 @@ public class Ctrl_SlotManager : Singleton<Ctrl_SlotManager>
     public int GetItemCount(int itemId)
     {
         int amount = 0;
-        if (activeSlot != null)
+        if (GetAllActiveSlot() != null)
         {
-            foreach (Ctrl_Slot slot in activeSlot)
+            foreach (Ctrl_Slot slot in GetAllActiveSlot())
             {
-                if (slot.Item.id==itemId)
+                if (slot.Item.id == itemId)
                 {
                     amount += slot.Item.currentNumber;
                 }
