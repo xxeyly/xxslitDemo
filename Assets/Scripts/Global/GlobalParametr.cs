@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class GlobalParametr : MonoBehaviour
 {
+    private void Awake()
+    {
+        enemyDictionary = new Dictionary<int, string>();
+        enemyDictionary.Add(0, "地狱三头犬");
+        enemyDictionary.Add(1, "木妖");
+        enemyDictionary.Add(2, "百年蟾蜍");
+        enemyDictionary.Add(3, "疾风兔");
+
+        npcDictionary = new Dictionary<int, string>();
+        npcDictionary.Add(0,"村长");
+        npcDictionary.Add(1,"王铁匠");
+        npcDictionary.Add(2,"草木精灵");
+        npcDictionary.Add(3,"王婶");
+    }
+
     #region 动画
 
     public const string UnarmedWalk = "IsUnarmed-Walk";
@@ -15,6 +30,7 @@ public class GlobalParametr : MonoBehaviour
     #endregion
 
     #region Tag
+
     public const string TAG_ENEMY = "Enemy";
 
     #region 枚举
@@ -36,6 +52,7 @@ public class GlobalParametr : MonoBehaviour
         Gold,
         Diamonds
     }
+
     public enum PlayerAnim
     {
         WAIT00,
@@ -47,8 +64,8 @@ public class GlobalParametr : MonoBehaviour
         RUN00_L,
         RUN00_R,
         RUN00_B,
-
     }
+
     public enum SimplyEnemyState
     {
         Idle,
@@ -56,14 +73,15 @@ public class GlobalParametr : MonoBehaviour
         Attack,
         Hurt,
         Death,
-
     }
+
     public enum ItemType
     {
         Drugs,
         Equipment,
         Material,
     }
+
     public enum EquipmentType
     {
         None,
@@ -81,9 +99,10 @@ public class GlobalParametr : MonoBehaviour
         Trinket,
         Weapon,
         Shield
-
     }
+
     #endregion
+
     #endregion
 
     #region 委托
@@ -93,28 +112,35 @@ public class GlobalParametr : MonoBehaviour
     /// </summary>
     /// <param name="controlType"></param>
     public delegate void del_PlayerControlWithStr(string controlType);
+
     /// <summary>
     /// 委托:玩家核心模型数值
     /// </summary>
     /// <param name="kv"></param>
     public delegate void del_PlayerKernalModel(KeyValuesUpdate kv);
+
     /// <summary>
     /// 委托:使用物品
     /// </summary>
     public delegate void del_SlotUseItem();
+
     /// <summary>
     /// 穿戴装备
     /// </summary>
     public delegate void del_Equipment();
+
     /// <summary>
     /// 
     /// </summary>
     public delegate void del_PickUp();
+
     /// <summary>
     /// 商店的委托slot
     /// </summary>
     public delegate void del_ShopSlot(Model_Item item);
+
     public delegate void del_EnemyBloodGroove(float value);
+
     public class KeyValuesUpdate
     {
         private string _Key;
@@ -140,9 +166,26 @@ public class GlobalParametr : MonoBehaviour
     #endregion
 
     #region 常量
+
     public const float DEFAULTSHOWTIME = 0.3f;
     public const float SKILLSHOWTIME = 0.3f;
     public const float SHOPSHOWTIME = 0.3f;
+    private static Dictionary<int, string> enemyDictionary;
+    private static Dictionary<int, string> npcDictionary;
+
+    public static string GetEnemyName(int id)
+    {
+        string enemyName;
+        enemyDictionary.TryGetValue(id, out enemyName);
+        return enemyName;
+    }
+
+    public static string GetNpcName(int id)
+    {
+        string npcName;
+        npcDictionary.TryGetValue(id, out npcName);
+        return npcName;
+    }
 
     #endregion
 }
