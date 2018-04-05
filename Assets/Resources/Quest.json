@@ -2,6 +2,7 @@
 	{
 		"id": 0,
 		"questReleaseNpc": "村长",
+		"questOverNpc": 1,
 		"questBriefIntroduction": "保卫村庄",
 		"questSescribe": "村子最近老是受到野狼的骚扰,请勇士去击杀20只野狼,并收集一些野狼的材料吧!",
 		"questDialogueNpc": ["你好啊,冒险家", "最近村子收到了野狼的骚扰,伤着不是村民,不知勇士愿意接受这个任务吗?"],
@@ -9,25 +10,25 @@
 		"questUnfinished": "快去村外击杀野狼吧!",
 		"questBranch": [2],
 		"questLevelLimit": 5,
-		"questTalkNPC": [""],
 		"questAccept": false,
 		"questState": false,
 		"questSubmit": false,
+		"questTalkNPC": [
+			{
+				"npcId": -1,
+				"isTalk": false
+			}
+		],
 		"questKillEnemy": [
 			{
 				"enemyId": 0,
-				"enemyNumber": 20,
+				"enemyNumber": 1,
 				"currentEnemyNumber": 0
-					}
+			}
 		],
 		"questItem": [
 			{
-				"itemId": 1,
-				"itemNumber": 20
-			},
-			{
-				"itemId": 2,
-				"itemNumber": 10
+				"itemId": -1
 			}
 		],
 		"questReward": {
@@ -36,8 +37,8 @@
 			"exp": 100,
 			"questRewardItem": [
 				{
-					"itemId": 1,
-					"itemNumber": 3
+					"itemId": 11,
+					"itemNumber": 1
 				},
 				{
 					"itemId": 2,
@@ -49,29 +50,33 @@
 	{
 		"id": 1,
 		"questReleaseNpc": "村长",
+		"questOverNpc": 1,
 		"questBriefIntroduction": "打造第一件装备",
 		"questSescribe": "去王铁匠那里去打造一件装备吧!",
-		"questDialogueNpc": [ "跟野狼搏斗时,受了不少伤吧,", "王铁匠那里打造了不少装备,你可以去看看?" ],
-		"questDialoguePlayer": [ "是的" ],
+		"questDialogueNpc": ["跟野狼搏斗时,受了不少伤吧,", "王铁匠那里打造了不少装备,你可以去看看?"],
+		"questDialoguePlayer": ["是的"],
 		"questUnfinished": "快去找王铁匠吧!",
-		"questBranch": [ 3 ],
+		"questBranch": [3],
 		"questLevelLimit": 5,
-		"questTalkNPC": [ "王铁匠" ],
 		"questAccept": false,
 		"questState": false,
 		"questSubmit": false,
+		"questTalkNPC": [
+			{
+				"npcId": 1,
+				"isTalk": false,
+				"questDialogueNpc": ["小伙子你来了,是想打造装备吧"]
+			}
+		],
+
 		"questKillEnemy": [
 			{
+				"enemyId": -1
 			}
 		],
 		"questItem": [
 			{
-				"itemId": 1,
-				"itemNumber": 20
-			},
-			{
-				"itemId": 2,
-				"itemNumber": 10
+				"itemId": -1
 			}
 		],
 		"questReward": {
@@ -80,7 +85,99 @@
 			"exp": 100,
 			"questRewardItem": [
 				{
-					"itemId": 31,
+					"itemId": 3,
+					"itemNumber": 1
+				}
+			]
+		}
+	},
+	{
+		"id": 2,
+		"questReleaseNpc": "精灵兽",
+		"questOverNpc": 1,
+		"questBriefIntroduction": "和精灵兽一起作战",
+		"questSescribe": "去野外跟精灵共同作战击杀一些木妖",
+		"questDialogueNpc": ["你好,我是草木精灵", "我想和你一起去作战?", "那我们去杀一些木妖吧!"],
+		"questDialoguePlayer": ["你好", "好啊,欢迎"],
+		"questUnfinished": "去村外击杀野狼!",
+		"questBranch": [3],
+		"questLevelLimit": 5,
+		"questAccept": false,
+		"questState": false,
+		"questSubmit": false,
+		"questTalkNPC": [
+			{
+				"npcId": -1,
+				"isTalk": false
+			}
+		],
+		"questKillEnemy": [
+			{
+				"enemyId": 1,
+				"enemyNumber": 10,
+				"currentEnemyNumber": 0
+			},
+			{
+				"enemyId": 2,
+				"enemyNumber": 20,
+				"currentEnemyNumber": 0
+			}
+		],
+		"questItem": [
+			{
+				"itemId": -1
+			}
+		],
+		"questReward": {
+			"gold": 0,
+			"diamod": 0,
+			"exp": 100,
+			"questRewardItem": [
+				{
+					"itemId": 4,
+					"itemNumber": 1
+				}
+			]
+		}
+	},
+	{
+		"id": 3,
+		"questReleaseNpc": "王婶",
+		"questOverNpc": 1,
+		"questBriefIntroduction": "帮王婶采集一些草药",
+		"questSescribe": "王婶需要一些草药来做药剂,需要你去野外采集一些红色浆果",
+		"questDialogueNpc": ["你好啊,小伙子", "你知道草药么?", "那就好", "野外有一种红色的果子,采集后可以加工一种药剂,可以在战斗中恢复体力.", "村南有不少,出门注意安全"],
+		"questDialoguePlayer": ["你好王婶", "认识一些", "王婶需要我做些什么?", "王婶那里有这种草药."],
+		"questUnfinished": "你还没有采集足够的草药",
+		"questBranch": [3],
+		"questLevelLimit": 5,
+		"questAccept": false,
+		"questState": false,
+		"questSubmit": false,
+		"questTalkNPC": [
+			{
+				"npcId": -1,
+				"isTalk": false
+			}
+		],
+		"questKillEnemy": [
+			{
+				"enemyId": -1
+			}
+		],
+		"questItem": [
+			{
+				"itemId": 12,
+				"itemNumber": 20
+			}
+		],
+		"questReward": {
+			"gold": 0,
+			"diamod": 0,
+			"exp": 100,
+			"questRewardItem": [
+				{
+					"itemId": 4,
 					"itemNumber": 1
 				}
 			]
