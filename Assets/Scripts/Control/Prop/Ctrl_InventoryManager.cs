@@ -125,6 +125,8 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
                 itemName = item.itemName,
                 itemType = item.itemType,
                 equipmentType = item.equipmentType,
+                materialType = item.materialType,
+                consumption = item.consumption,
                 maxStack = item.maxStack,
                 currentNumber = item.currentNumber,
                 buyPriceByGold = item.buyPriceByGold,
