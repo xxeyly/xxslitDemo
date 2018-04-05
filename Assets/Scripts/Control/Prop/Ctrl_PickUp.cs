@@ -44,6 +44,13 @@ public class Ctrl_PickUp : MonoBehaviour
             Item = null;
         }
     }
+    /// <summary>
+    /// 更新数量显示
+    /// </summary>
+    public void UpdateAmount()
+    {
+        viewItem.UpdateAmount();
+    }
 
     private void Update()
     {
@@ -55,13 +62,14 @@ public class Ctrl_PickUp : MonoBehaviour
                 //如果鼠标指针下不是UI界面,丢弃物品
                 if (!EventSystem.current.IsPointerOverGameObject())
                 {
+                    //丢弃物品
                     DropItem();
                 }
                 else
                 {
                     if (collderObjectName == "PlayerShop")
                     {
-                        for (int i = 0; i < Item.maxStack; i++)
+                        for (int i = 0; i < Item.currentNumber; i++)
                         {
                             Ctrl_HeroProperty.Instance.AddGold(Item.sellPriceByGold);
                             Ctrl_HeroProperty.Instance.AddDiamods(Item.sellPriceByDiamond);
