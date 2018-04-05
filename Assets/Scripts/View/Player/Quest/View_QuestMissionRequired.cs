@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class View_QuestMissionRequired : MonoBehaviour
 {
-    [SerializeField]private Text currentCount;
-    [SerializeField]private Text questCount;
-    [SerializeField]private Text questName;
+    [SerializeField] private Text currentCount;
+    [SerializeField] private Text questCount;
+    [SerializeField] private Text questName;
+    [SerializeField] private Image mark;
 
     public Text CurrentCount
     {
@@ -30,12 +31,13 @@ public class View_QuestMissionRequired : MonoBehaviour
         set { questName = value; }
     }
 
-    void Start()
+    public void HideMark()
     {
+        mark.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowMark()
     {
+        mark.gameObject.SetActive(true);
     }
 }
