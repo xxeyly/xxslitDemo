@@ -223,5 +223,25 @@
 		"equipDefenseBonus": 1000,
 		"equipDamageBonus": 1000,
 		"sprite": "Sprites/Items/a5_83"
+	},
+	{
+		"id": 12,
+		"itemName": "红色浆果",
+		"itemType": "Drugs",
+		"equipmentType": "None",
+		"maxStack": 99,
+		"currentNumber": 1,
+		"buyPriceByGold": 0,
+		"buyPriceByDiamond": 0,
+		"sellPriceByGold": 0,
+		"sellPriceByDiamond": 0,
+		"minLevel": 5,
+		"sellable": true,
+		"tradable": true,
+		"destroyable": true,
+		"description": "野外常见的浆果,可以做成药剂,食用HP+20",
+		"useDestroy": true,
+		"useHealth": 50,
+		"sprite": "Sprites/Items/apple"
 	}
 ]
