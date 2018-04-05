@@ -29,7 +29,9 @@ public class Ctrl_Enemy_Property : MonoBehaviour
 
         set { _CurrentState = value; }
     }
-
+    /// <summary>
+    /// 当前健康值
+    /// </summary>
     public int IntCurrentHealth
     {
         get { return intCurrentHealth; }
@@ -50,7 +52,10 @@ public class Ctrl_Enemy_Property : MonoBehaviour
     void Update()
     {
     }
-
+    /// <summary>
+    /// 怪物收到伤害
+    /// </summary>
+    /// <param name="hurtNumber"></param>
     public void OnHurt(int hurtNumber)
     {
         _CurrentState = GlobalParametr.SimplyEnemyState.Hurt;
@@ -94,6 +99,10 @@ public class Ctrl_Enemy_Property : MonoBehaviour
                                 if (enemy.currentEnemyNumber < enemy.enemyNumber)
                                 {
                                     enemy.currentEnemyNumber++;
+                                    if (Ctrl_QuestItemManager.Instance.GetSelectOverlay().Quest.id == quest.id)
+                                    {
+                                        Ctrl_QuestItemManager.Instance.ShowQuestInfo(quest);
+                                    }
                                 }
                             }
                         }
