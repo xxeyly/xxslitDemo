@@ -96,6 +96,21 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
                     {
                         slot.Item.currentNumber += 1;
                         slot.UpdateAmount();
+                        //检测执行的任务中是否是添加的物品
+                        foreach (Model_Quest quest in Ctrl_PlayerQuest.Instance.PlayQuestList)
+                        {
+                            foreach (Model_Quest.QuestItem questItem in quest.questItem)
+                            {
+                                if (questItem.itemId == itemId)
+                                {
+                                    if (Ctrl_QuestItemManager.Instance.GetSelectOverlay().Quest.id == quest.id)
+                                    {
+                                        Ctrl_QuestItemManager.Instance.ShowQuestInfo(quest);
+                                    }
+                                }
+                            }
+                        }
+
                         return true;
                     }
                 }
@@ -133,6 +148,20 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
                 equipSpeedcBonus = item.equipSpeedcBonus,
                 modelPrefab = item.modelPrefab
             };
+            //检测执行的任务中是否是添加的物品
+            foreach (Model_Quest quest in Ctrl_PlayerQuest.Instance.PlayQuestList)
+            {
+                foreach (Model_Quest.QuestItem questItem in quest.questItem)
+                {
+                    if (questItem.itemId == itemId)
+                    {
+                        if (Ctrl_QuestItemManager.Instance.GetSelectOverlay().Quest.id == quest.id)
+                        {
+                            Ctrl_QuestItemManager.Instance.ShowQuestInfo(quest);
+                        }
+                    }
+                }
+            }
 
             return true;
         }
