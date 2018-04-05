@@ -5,6 +5,8 @@ public class Model_Item
     [Header("基本信息")] public int id; //物品ID
     public string itemName; //物品名称
     public string itemType; //物品类型
+    public string materialType; //材料类型
+    public int consumption; //消耗时间
     public string equipmentType; //装备类型
     public int maxStack; //上限个数
     public int currentNumber; //当前数量
@@ -21,6 +23,7 @@ public class Model_Item
 
     [Header("使用提升")] //属性回复
     public bool useDestroy; //使用摧毁
+
     public int useHealth; //提升健康
     public int useMagic; //提升魔法
     public int useExperience; //提升经验
@@ -37,11 +40,11 @@ public class Model_Item
     public override string ToString()
     {
         return string.Format(
-            "Id: {0}, ItemName: {1}, ItemType: {2}, EquipmentType: {3}, MaxStack: {4}, CurrentNumber: {5}, BuyPriceByGold: {6}, BuyPriceByDiamond: {7}, SellPriceByGold: {8}, SellPriceByDiamond: {9}, MinLevel: {10}, Sellable: {11}, Tradable: {12}, Destroyable: {13}, ToolTip: {14}, Sprite: {15}, UsageDestroy: {16}, UsageHealth: {17}, UsageMana: {18}, UsageExperience: {19}, EquipHealthBonus: {20}, EquipManaBonus: {21}, EquipDamageBonus: {22}, EquipDefenseBonus: {23}, EquipSpeedcBonus: {24}, ModelPrefab: {25}",
-            id, itemName, itemType, equipmentType, maxStack, currentNumber, buyPriceByGold, buyPriceByDiamond,
-            sellPriceByGold, sellPriceByDiamond, minLevel, sellable, tradable, destroyable, description, sprite,
-            useDestroy, useHealth, useMagic, useExperience, equipHealthBonus, equipManaBonus, equipDamageBonus,
-            equipDefenseBonus, equipSpeedcBonus, modelPrefab);
+            "Id: {0}, ItemName: {1}, ItemType: {2}, MaterialType: {3}, Consumption: {4}, EquipmentType: {5}, MaxStack: {6}, CurrentNumber: {7}, BuyPriceByGold: {8}, BuyPriceByDiamond: {9}, SellPriceByGold: {10}, SellPriceByDiamond: {11}, MinLevel: {12}, Sellable: {13}, Tradable: {14}, Destroyable: {15}, Description: {16}, Sprite: {17}, UseDestroy: {18}, UseHealth: {19}, UseMagic: {20}, UseExperience: {21}, EquipHealthBonus: {22}, EquipManaBonus: {23}, EquipDamageBonus: {24}, EquipDefenseBonus: {25}, EquipSpeedcBonus: {26}, ModelPrefab: {27}",
+            id, itemName, itemType, materialType, consumption, equipmentType, maxStack, currentNumber, buyPriceByGold,
+            buyPriceByDiamond, sellPriceByGold, sellPriceByDiamond, minLevel, sellable, tradable, destroyable,
+            description, sprite, useDestroy, useHealth, useMagic, useExperience, equipHealthBonus, equipManaBonus,
+            equipDamageBonus, equipDefenseBonus, equipSpeedcBonus, modelPrefab);
     }
 
     public string ItemInfo()
@@ -75,7 +78,7 @@ public class Model_Item
 
         if (ConsumableTootip() != "")
         {
-            tip += ConsumableTootip() ;
+            tip += ConsumableTootip();
         }
 
         if (useDestroy)
