@@ -10,6 +10,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     [SerializeField] private GameObject goPlayerMarketPanel; //商城系统
     [SerializeField] private GameObject goPlayerPackagePanel; //装备/背包系统
     [SerializeField] private GameObject goPlayerCharacterPanel; //角色属性
+    [SerializeField] private GameObject goPlayerCampfirePanel; //烹饪面板
     [SerializeField] private GameObject goRetraitDeploiement;
 
     [SerializeField] GameObject btnPlayerSkill;
@@ -17,6 +18,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     [SerializeField] private GameObject btnPlayerMarket;
     [SerializeField] private GameObject btnPlayerPackage;
     [SerializeField] private GameObject btnPlayerCharacter;
+    [SerializeField] private GameObject btnCampfire; //烹饪按钮
     [SerializeField] private bool isShow = true;
     [SerializeField] private Sprite[] _HideOrShow = new Sprite[2];
 
@@ -74,7 +76,6 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         goPlayerMarketPanel.GetComponent<CanvasGroup>().alpha = 1;
         goPlayerMarketPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
         goPlayerMarketPanel.GetComponent<BoxCollider2D>().enabled = true;
-
     }
 
     public void HideMarketPanel()
@@ -109,6 +110,18 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         goPlayerCharacterPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
+    public void DisplayCampfirePanel()
+    {
+        goPlayerCampfirePanel.GetComponent<CanvasGroup>().alpha = 1;
+        goPlayerCampfirePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+    }
+
+    public void HideCampfirePanel()
+    {
+        goPlayerCampfirePanel.GetComponent<CanvasGroup>().alpha = 0;
+        goPlayerCampfirePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+    }
+
     private void DisyAllPanel()
     {
         btnPlayerSkill.SetActive(true);
@@ -116,6 +129,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         btnPlayerMarket.SetActive(true);
         btnPlayerPackage.SetActive(true);
         btnPlayerCharacter.SetActive(true);
+        btnCampfire.SetActive(true);
         isShow = true;
         goRetraitDeploiement.GetComponent<Image>().sprite = _HideOrShow[1];
     }
@@ -127,6 +141,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         btnPlayerMarket.SetActive(false);
         btnPlayerPackage.SetActive(false);
         btnPlayerCharacter.SetActive(false);
+        btnCampfire.SetActive(false);
         goRetraitDeploiement.GetComponent<Image>().sprite = _HideOrShow[0];
 
         isShow = false;
