@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
 {
@@ -17,14 +18,16 @@ public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
             GetComponent<View_FuelSlot>().InitView(value);
         }
     }
-
-    public void UpdateAmount(Model_Item item)
+    /// <summary>
+    /// 更新个数显示
+    /// </summary>
+    public void UpdateAmount()
     {
         GetComponent<View_FuelSlot>().UpdateAmount(Item);
     }
 
     /// <summary>
-    /// 鼠标左键单击
+    /// 同背包物品交换 这里做了限制 只有木材才能替换或者添加
     /// </summary>
     /// <param name="eventData"></param>
     public void OnPointerDown(PointerEventData eventData)
@@ -105,7 +108,7 @@ public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
                             if (Item.currentNumber < Item.maxStack)
                             {
                                 item.currentNumber++;
-                                UpdateAmount(Item); //更新个数UI显示
+                                UpdateAmount(); //更新个数UI显示
                                 //如果手上的物品数量只剩一个
                                 if (pickUp.Item.currentNumber - 1 == 0)
                                 {
@@ -125,14 +128,14 @@ public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
                         if (Item.maxStack - Item.currentNumber > pickUp.Item.currentNumber)
                         {
                             Item.currentNumber += pickUp.Item.currentNumber;
-                            UpdateAmount(Item); //更新个数UI显示
+                            UpdateAmount(); //更新个数UI显示
                             pickUp.Item = null;
                         }
                         else
                         {
                             pickUp.Item.currentNumber -= (Item.maxStack - Item.currentNumber);
                             Item.currentNumber = Item.maxStack;
-                            UpdateAmount(Item); //更新个数UI显示
+                            UpdateAmount(); //更新个数UI显示
                             pickUp.UpdateAmount(); //更新UI显示
                         }
                     }
@@ -157,5 +160,49 @@ public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
                 Item = null;
             }
         }
+    }
+
+    /// <summary>
+    /// 火源消耗
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator Combustion()
+    {
+        yield return new WaitForSeconds(Item.consumption);
+        Item.currentNumber -= 1;
+        if (Item.currentNumber <= 0)
+        {
+            Item = null;
+            Ctrl_CampfireManager.Instance.IsCombustion = false;
+            UpdateSwitch();
+            StopAllCoroutines();
+        }
+        else
+        {
+            UpdateAmount();
+            StartCoroutine(Combustion());
+        }
+    }
+    /// <summary>
+    /// 开启或者关闭火源协程
+    /// </summary>
+    /// <param name="value"></param>
+    public void Fuel(bool value)
+    {
+        if (value)
+        {
+            StartCoroutine(Combustion());
+        }
+        else
+        {
+            StopAllCoroutines();
+        }
+    }
+    /// <summary>
+    /// 更新开火/关火UI显示 当前状态是"开火".点击变为"关火"
+    /// </summary>
+    public void UpdateSwitch()
+    {
+        GetComponent<View_FuelSlot>().UpdateSwitch();
     }
 }
