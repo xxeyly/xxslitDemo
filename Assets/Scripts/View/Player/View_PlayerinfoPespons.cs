@@ -73,12 +73,15 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     {
         goPlayerMarketPanel.GetComponent<CanvasGroup>().alpha = 1;
         goPlayerMarketPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        goPlayerMarketPanel.GetComponent<BoxCollider2D>().enabled = true;
+
     }
 
     public void HideMarketPanel()
     {
         goPlayerMarketPanel.GetComponent<CanvasGroup>().alpha = 0;
         goPlayerMarketPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        goPlayerMarketPanel.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public void DisplayPackagePanel()
