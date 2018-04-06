@@ -13,10 +13,13 @@ public class GlobalParametr : MonoBehaviour
         enemyDictionary.Add(3, "疾风兔");
 
         npcDictionary = new Dictionary<int, string>();
-        npcDictionary.Add(0,"村长");
-        npcDictionary.Add(1,"王铁匠");
-        npcDictionary.Add(2,"草木精灵");
-        npcDictionary.Add(3,"王婶");
+        npcDictionary.Add(0, "村长");
+        npcDictionary.Add(1, "王铁匠");
+        npcDictionary.Add(2, "草木精灵");
+        npcDictionary.Add(3, "王婶");
+
+        cookingProductDictionary = new Dictionary<int, int>();
+        cookingProductDictionary.Add(15, 16);
     }
 
     #region 动画
@@ -170,9 +173,16 @@ public class GlobalParametr : MonoBehaviour
     public const float DEFAULTSHOWTIME = 0.3f;
     public const float SKILLSHOWTIME = 0.3f;
     public const float SHOPSHOWTIME = 0.3f;
+    public const float STEAMINGTIME = 3f;
     private static Dictionary<int, string> enemyDictionary;
     private static Dictionary<int, string> npcDictionary;
+    private static Dictionary<int, int> cookingProductDictionary;
 
+    /// <summary>
+    /// 根据ID获得怪物名称
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public static string GetEnemyName(int id)
     {
         string enemyName;
@@ -180,11 +190,27 @@ public class GlobalParametr : MonoBehaviour
         return enemyName;
     }
 
+    /// <summary>
+    /// 根据ID获得NPC名称
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public static string GetNpcName(int id)
     {
         string npcName;
         npcDictionary.TryGetValue(id, out npcName);
         return npcName;
+    }
+    /// <summary>
+    /// 根据ID获得熟品名称
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public static int GetCookingProduct(int id)
+    {
+        int cookingProduct;
+        cookingProductDictionary.TryGetValue(id, out cookingProduct);
+        return cookingProduct;
     }
 
     #endregion
