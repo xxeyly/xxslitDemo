@@ -6,15 +6,6 @@ using UnityEngine;
 public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
 {
     [SerializeField] private TextAsset itemJson;
-    [SerializeField] private Canvas canvas;
-    public GameObject Tootip;
-    public GameObject PickUpItem;
-    public bool isToolTipShow = false;
-    public bool IsPickedItem { get; set; }
-
-    //Tootip偏移
-    private Vector2 toolTipPosionOffset = new Vector2(10, -10);
-
     /// <summary>
     ///  物品信息的列表（集合）
     /// </summary>
@@ -215,28 +206,4 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
         return null;
     }
 
-    private void Update()
-    {
-        if (IsPickedItem)
-        {
-            //如果我们捡起了物品，我们就要让物品跟随鼠标
-            Vector2 position;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
-                Input.mousePosition, canvas.worldCamera, out position);
-            PickUpItem.GetComponent<Ctrl_PickUp>().SetLocalPosition(position);
-        }
-
-        if (isToolTipShow)
-        {
-            //控制提示面板跟随鼠标
-            Vector2 position;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
-                Input.mousePosition, canvas.worldCamera, out position);
-            Tootip.GetComponent<View_ToolTip>().SetLocalPotion(position + toolTipPosionOffset);
-        }
-        else
-        {
-            Tootip.GetComponent<View_ToolTip>().Hide();
-        }
-    }
 }
