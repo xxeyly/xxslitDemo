@@ -321,5 +321,19 @@
 		"useDestroy": true,
 		"useHealth": 50,
 		"sprite": "Sprites/Items/Meat"
+	},
+	{
+		"id": 17,
+		"itemName": "头盖骨",
+		"itemType": "Material",
+		"materialType": "Oter",
+		"maxStack": 99,
+		"currentNumber": 1,
+		"sellable": true,
+		"tradable": true,
+		"destroyable": true,
+		"description": "野外常见的头盖骨,不知道有什么用途.",
+		"useDestroy": true,
+		"sprite": "Sprites/Items/Bone Helmet"
 	}
 ]
