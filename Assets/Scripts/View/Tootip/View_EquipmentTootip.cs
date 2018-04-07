@@ -18,7 +18,7 @@ public class View_EquipmentTootip : MonoBehaviour
         itemName.text = item.itemName;
         DescribeOutside.text = item.description + "\n\n";
         DescribeInside.text = item.description;
-        EquipmentAttributeOutside.text = item.EquipTootip() + item.ConsumableTootip() + "\n";
+        EquipmentAttributeOutside.text = item.EquipTootip() + item.ConsumableTootip() + "\nau";
         EquipmentAttributeInside.text = item.EquipTootip() + item.ConsumableTootip();
     }
 }
