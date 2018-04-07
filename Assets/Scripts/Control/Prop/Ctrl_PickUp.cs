@@ -55,7 +55,7 @@ public class Ctrl_PickUp : MonoBehaviour
     private void Update()
     {
         //当前手上有物品
-        if (Ctrl_InventoryManager.Instance.IsPickedItem)
+        if (Ctrl_TootipManager.Instance.IsPickedItem)
         {
             if (Input.GetMouseButtonDown(0))
             {

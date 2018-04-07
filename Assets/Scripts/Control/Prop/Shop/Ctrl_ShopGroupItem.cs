@@ -16,7 +16,7 @@ public class Ctrl_ShopGroupItem : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         //鼠标左键点击购买商品
-        if (eventData.button == PointerEventData.InputButton.Left&&Ctrl_InventoryManager.Instance.IsPickedItem==false)
+        if (eventData.button == PointerEventData.InputButton.Left && Ctrl_TootipManager.Instance.IsPickedItem == false)
         {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
                 Input.mousePosition, canvas.worldCamera, out position);

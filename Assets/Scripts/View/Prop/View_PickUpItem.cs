@@ -22,14 +22,14 @@ public class View_PickUpItem : MonoBehaviour
         if (item == null)
         {
             canvas.alpha = 0;
-            Ctrl_InventoryManager.Instance.IsPickedItem = false;
+            Ctrl_TootipManager.Instance.IsPickedItem = false;
         }
         else
         {
             canvas.alpha = 1;
             _ImgIcon.sprite = Resources.Load<Sprite>(item.sprite);
             _Amount.text = item.currentNumber.ToString();
-            Ctrl_InventoryManager.Instance.IsPickedItem = true;
+            Ctrl_TootipManager.Instance.IsPickedItem = true;
         }
     }
 

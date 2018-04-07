@@ -32,7 +32,7 @@ public class Ctrl_CookingProductsSlot : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         //手上的物品
-        Ctrl_PickUp pickUp = Ctrl_InventoryManager.Instance.PickUpItem.GetComponent<Ctrl_PickUp>();
+        Ctrl_PickUp pickUp = Ctrl_TootipManager.Instance.PickUpItem.GetComponent<Ctrl_PickUp>();
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             //手上无物品

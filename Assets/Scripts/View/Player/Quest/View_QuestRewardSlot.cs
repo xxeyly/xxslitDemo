@@ -23,15 +23,15 @@ public class View_QuestRewardSlot : MonoBehaviour, IPointerEnterHandler, IPointe
         {
             return;
         }
-        Ctrl_InventoryManager.Instance.isToolTipShow = true;
-        Ctrl_InventoryManager.Instance.Tootip.GetComponent<View_ToolTip>()
-            .Show(GetComponent<Ctrl_QuestRewardSlot>().Item.ItemInfo());
+
+        Ctrl_TootipManager.Instance.isToolTipShow = true;
+        Ctrl_TootipManager.Instance.ShowItemInfo(GetComponent<Ctrl_QuestRewardSlot>().Item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         hoverOverlay.SetActive(false);
-        Ctrl_InventoryManager.Instance.isToolTipShow = false;
+        Ctrl_TootipManager.Instance.isToolTipShow = false;
     }
 
     public void ShowGoldView(int amount)

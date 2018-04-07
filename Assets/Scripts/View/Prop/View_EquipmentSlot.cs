@@ -16,7 +16,7 @@ public class View_EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerE
         if (equipmentSlot.Item == null)
         {
             _ImgIcon.gameObject.SetActive(false);
-            Ctrl_InventoryManager.Instance.isToolTipShow = false;
+            Ctrl_TootipManager.Instance.isToolTipShow = false;
         }
         else
         {
@@ -45,20 +45,19 @@ public class View_EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerE
         _ImgHoverOverlay.gameObject.SetActive(true);
         if (equipmentSlot.Item != null && View_PlayerinfoPespons.Instance.GetPlayerCharacterPanelAlpha() > 0f)
         {
-            Ctrl_InventoryManager.Instance.isToolTipShow = true;
-            Ctrl_InventoryManager.Instance.Tootip.GetComponent<View_ToolTip>()
-                .Show(equipmentSlot.Item.ItemInfo());
+            Ctrl_TootipManager.Instance.isToolTipShow = true;
+            Ctrl_TootipManager.Instance.ShowItemInfo(equipmentSlot.Item);
         }
         else
         {
-            Ctrl_InventoryManager.Instance.isToolTipShow = false;
+            Ctrl_TootipManager.Instance.isToolTipShow = false;
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         _ImgHoverOverlay.gameObject.SetActive(false);
-        Ctrl_InventoryManager.Instance.isToolTipShow = false;
+        Ctrl_TootipManager.Instance.isToolTipShow = false;
     }
 
     void Start()

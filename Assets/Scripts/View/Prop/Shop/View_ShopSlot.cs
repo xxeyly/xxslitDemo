@@ -7,13 +7,12 @@ public class View_ShopSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Ctrl_InventoryManager.Instance.isToolTipShow = true;
-        Ctrl_InventoryManager.Instance.Tootip.GetComponent<View_ToolTip>()
-            .Show(GetComponent<Ctrl_ShopSlot>().Item.ItemInfo());
+        Ctrl_TootipManager.Instance.isToolTipShow = true;
+        Ctrl_TootipManager.Instance.ShowItemInfo(GetComponent<Ctrl_ShopSlot>().Item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Ctrl_InventoryManager.Instance.isToolTipShow = false;
+        Ctrl_TootipManager.Instance.isToolTipShow = false;
     }
 }

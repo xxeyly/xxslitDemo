@@ -18,9 +18,8 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _ImgHoverOverlay.gameObject.SetActive(true);
         if (slot.Item != null && View_PlayerinfoPespons.Instance.GetPlayerPackagePanelAlpha() > 0f)
         {
-            Ctrl_InventoryManager.Instance.isToolTipShow = true;
-            Ctrl_InventoryManager.Instance.Tootip.GetComponent<View_ToolTip>()
-                .Show(slot.Item.ItemInfo());
+            Ctrl_TootipManager.Instance.isToolTipShow = true;
+            Ctrl_TootipManager.Instance.ShowItemInfo(slot.Item);
         }
     }
 
@@ -33,7 +32,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         _ImgHoverOverlay.gameObject.SetActive(false);
-        Ctrl_InventoryManager.Instance.isToolTipShow = false;
+        Ctrl_TootipManager.Instance.isToolTipShow = false;
     }
 
     public void SlotInit()
@@ -56,7 +55,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _ImgHoverOverlay = transform.Find("Hover Overlay").GetComponent<Image>();
         _ImgIcon = transform.Find("Icon").GetComponent<Image>();
         _Amount = transform.Find("Amount").GetComponent<Text>();
-        pickupItemSlot = Ctrl_InventoryManager.Instance.PickUpItem.GetComponent<Ctrl_PickUp>();
+        pickupItemSlot = Ctrl_TootipManager.Instance.PickUpItem.GetComponent<Ctrl_PickUp>();
     }
 
 
@@ -85,9 +84,9 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (eventData.button == PointerEventData.InputButton.Right)
             {
                 //如果现在手上没有物品,并且当前slot有物品
-                if (Ctrl_InventoryManager.Instance.IsPickedItem == false && slot.Item != null)
+                if (Ctrl_TootipManager.Instance.IsPickedItem == false && slot.Item != null)
                 {
-                    Ctrl_InventoryManager.Instance.IsPickedItem = true;
+                    Ctrl_TootipManager.Instance.IsPickedItem = true;
                     pickupItemSlot.Item = slot.Item;
                     slot.Item = null;
                 }
@@ -97,7 +96,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 //当前手上存在物品
-                if (Ctrl_InventoryManager.Instance.IsPickedItem)
+                if (Ctrl_TootipManager.Instance.IsPickedItem)
                 {
                     //当前格子内没有物品
                     if (slot.Item == null)
@@ -138,14 +137,14 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                             if (pickupItemSlot.Item.currentNumber == 0)
                             {
                                 pickupItemSlot.Item = null;
-                                Ctrl_InventoryManager.Instance.IsPickedItem = false;
+                                Ctrl_TootipManager.Instance.IsPickedItem = false;
                             }
                         }
                         else
                         {
                             slot.Item = pickupItemSlot.Item;
                             pickupItemSlot.Item = null;
-                            Ctrl_InventoryManager.Instance.IsPickedItem = false;
+                            Ctrl_TootipManager.Instance.IsPickedItem = false;
                         }
                     }
                     //格子内存在物品
@@ -164,7 +163,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                                     if (pickupItemSlot.Item.currentNumber == 0)
                                     {
                                         pickupItemSlot.Item = null;
-                                        Ctrl_InventoryManager.Instance.IsPickedItem = false;
+                                        Ctrl_TootipManager.Instance.IsPickedItem = false;
                                     }
                                 }
                             }
@@ -177,7 +176,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                                     slot.Item.currentNumber += pickupItemSlot.Item.currentNumber;
                                     slot.UpdateAmount();
                                     pickupItemSlot.Item = null;
-                                    Ctrl_InventoryManager.Instance.IsPickedItem = false;
+                                    Ctrl_TootipManager.Instance.IsPickedItem = false;
                                 }
                                 else
                                 {

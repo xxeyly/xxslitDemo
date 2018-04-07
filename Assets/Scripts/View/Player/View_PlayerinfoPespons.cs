@@ -95,7 +95,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     {
         goPlayerPackagePanel.GetComponent<CanvasGroup>().alpha = 0;
         goPlayerPackagePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        Ctrl_InventoryManager.Instance.isToolTipShow = false;
+        Ctrl_TootipManager.Instance.isToolTipShow = false;
     }
 
     public void DisplayCharacterPanel()
