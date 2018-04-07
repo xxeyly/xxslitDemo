@@ -144,7 +144,7 @@ public class Model_Item
         return consumableTootip;
     }
 
-    private string EquipTootip()
+    public string EquipTootip()
     {
         string tip = "";
         if (equipHealthBonus != 0)
@@ -175,7 +175,7 @@ public class Model_Item
         return tip;
     }
 
-    private string ConsumableTootip()
+    public string ConsumableTootip()
     {
         string tip = "";
         if (useHealth != 0)
@@ -193,6 +193,16 @@ public class Model_Item
             tip += "经验+" + useExperience.ToString() + "\n";
         }
 
+        return tip;
+    }
+
+    public string MateriaTootip()
+    {
+        string tip = "";
+        if (materialType == "Fuel")
+        {
+            tip += "燃烧时间:" + consumption.ToString() + "\n";
+        }
         return tip;
     }
 }
