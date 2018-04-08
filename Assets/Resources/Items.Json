@@ -335,5 +335,85 @@
 		"description": "野外常见的头盖骨,不知道有什么用途.",
 		"useDestroy": true,
 		"sprite": "Sprites/Items/Bone Helmet"
+	},
+	{
+		"id": 18,
+		"itemName": "虎皮大衣设计图",
+		"itemType": "Drawing",
+		"maxStack": 1,
+		"currentNumber": 1,
+		"sellable": true,
+		"tradable": true,
+		"destroyable": true,
+		"description": "收集材料可以制作一件真正的虎皮大衣",
+		"useDestroy": true,
+		"drawing": [
+			{
+				"itemId": 2,
+				"itemCount": 10
+			},
+			{
+				"itemId": 3,
+				"itemCount": 10
+			},
+			{
+				"itemId": 17,
+				"itemCount": 100
+			},
+			{
+				"itemId": 11,
+				"itemCount": 1
+			},
+			{
+				"itemId": 17,
+				"itemCount": 1
+			},
+			{
+				"itemId": 16,
+				"itemCount": 1
+			},
+			{
+				"itemId": 15,
+				"itemCount": 1
+			},
+			{
+				"itemId": 14,
+				"itemCount": 1
+			},
+			{
+				"itemId": 12,
+				"itemCount": 1
+			}
+		],
+		"makeTime": 10,
+		"equipDamageBonus": 100,
+		"equipDefenseBonus": 50,
+		"equipHealthBonus": 100,
+		"equipManaBonus": 50,
+		"sprite": "Sprites/Items/Leather ChestplateDrawing"
+	},
+	{
+		"id": 19,
+		"itemName": "虎皮帽设计图",
+		"itemType": "Drawing",
+		"maxStack": 1,
+		"currentNumber": 1,
+		"sellable": true,
+		"tradable": true,
+		"destroyable": true,
+		"description": "收集材料可以制作一件真正的虎皮大衣",
+		"useDestroy": true,
+		"drawing": [
+			{
+				"itemId": 1,
+				"itemCount": 1
+			}
+		],
+		"makeTime": 2,
+		"equipDamageBonus": 10,
+		"equipDefenseBonus": 35,
+		"equipHealthBonus": 56,
+		"equipManaBonus": 50,
+		"sprite": "Sprites/Items/Leather HelmetDrawing"
 	}
 ]
