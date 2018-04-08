@@ -20,6 +20,8 @@ public class View_DrawingTootip : MonoBehaviour
         itemName.text = item.itemName;
         DescribeOutside.text = item.description + "\n\n";
         DescribeInside.text = item.description;
+        MaterialConsumptionOutside.text = item.DrawingTootip() + "\n";
+        MaterialConsumptionInside.text = item.DrawingTootip();
         EquipmentAttributeOutside.text = item.EquipTootip() + item.ConsumableTootip() + "\n\n";
         EquipmentAttributeInside.text = item.EquipTootip() + item.ConsumableTootip();
 
