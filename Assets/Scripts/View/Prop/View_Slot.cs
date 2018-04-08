@@ -104,35 +104,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                         //按住Ctrl放下一个物品
                         if (Input.GetKey(KeyCode.LeftControl))
                         {
-                            slot.Item = new Model_Item
-                            {
-                                id = pickupItemSlot.Item.id,
-                                itemName = pickupItemSlot.Item.itemName,
-                                itemType = pickupItemSlot.Item.itemType,
-                                equipmentType = pickupItemSlot.Item.equipmentType,
-                                maxStack = pickupItemSlot.Item.maxStack,
-                                currentNumber = 1,
-                                buyPriceByGold = pickupItemSlot.Item.buyPriceByGold,
-                                buyPriceByDiamond = pickupItemSlot.Item.buyPriceByDiamond,
-                                sellPriceByGold = pickupItemSlot.Item.sellPriceByGold,
-                                sellPriceByDiamond = pickupItemSlot.Item.sellPriceByDiamond,
-                                minLevel = pickupItemSlot.Item.minLevel,
-                                sellable = pickupItemSlot.Item.sellable,
-                                tradable = pickupItemSlot.Item.tradable,
-                                destroyable = pickupItemSlot.Item.destroyable,
-                                description = pickupItemSlot.Item.description,
-                                sprite = pickupItemSlot.Item.sprite,
-                                useDestroy = pickupItemSlot.Item.useDestroy,
-                                useHealth = pickupItemSlot.Item.useHealth,
-                                useMagic = pickupItemSlot.Item.useMagic,
-                                useExperience = pickupItemSlot.Item.useExperience,
-                                equipHealthBonus = pickupItemSlot.Item.equipHealthBonus,
-                                equipManaBonus = pickupItemSlot.Item.equipManaBonus,
-                                equipDamageBonus = pickupItemSlot.Item.equipDamageBonus,
-                                equipDefenseBonus = pickupItemSlot.Item.equipDefenseBonus,
-                                equipSpeedcBonus = pickupItemSlot.Item.equipSpeedcBonus,
-                                modelPrefab = pickupItemSlot.Item.modelPrefab
-                            };
+                            slot.Item = Ctrl_InventoryManager.Instance.NewItem(pickupItemSlot.Item.id);
                             pickupItemSlot.Item.currentNumber -= 1;
                             if (pickupItemSlot.Item.currentNumber == 0)
                             {
