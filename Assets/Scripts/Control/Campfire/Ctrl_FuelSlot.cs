@@ -48,7 +48,8 @@ public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
                         //按住CTRL键,一下添加一个
                         if (Input.GetKey(KeyCode.LeftControl))
                         {
-                            Item = new Model_Item
+                            Item = Ctrl_InventoryManager.Instance.NewItem(pickUp.Item.id);
+                          /*  Item = new Model_Item
                             {
                                 id = pickUp.Item.id,
                                 itemName = pickUp.Item.itemName,
@@ -77,7 +78,7 @@ public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
                                 equipDefenseBonus = pickUp.Item.equipDefenseBonus,
                                 equipSpeedcBonus = pickUp.Item.equipSpeedcBonus,
                                 modelPrefab = pickUp.Item.modelPrefab
-                            };
+                            };*/
                             //如果手上的物品数量只剩一个
                             if (pickUp.Item.currentNumber - 1 == 0)
                             {

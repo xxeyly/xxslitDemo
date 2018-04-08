@@ -54,7 +54,8 @@ public class Ctrl_CookingProductsSlot : MonoBehaviour, IPointerDownHandler
 
         if (Item == null)
         {
-            Item = new Model_Item
+            Item = Ctrl_InventoryManager.Instance.NewItem(item.id);
+           /* Item = new Model_Item
             {
                 id = item.id,
                 itemName = item.itemName,
@@ -84,7 +85,7 @@ public class Ctrl_CookingProductsSlot : MonoBehaviour, IPointerDownHandler
                 equipDefenseBonus = item.equipDefenseBonus,
                 equipSpeedcBonus = item.equipSpeedcBonus,
                 modelPrefab = item.modelPrefab
-            };
+            };*/
         }
         else
         {
