@@ -110,7 +110,8 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
 
         if (emptySlot != null)
         {
-            emptySlot.Item = new Model_Item
+            emptySlot.Item = Ctrl_InventoryManager.Instance.NewItem(item.id);
+           /* emptySlot.Item = new Model_Item
             {
                 id = item.id,
                 itemName = item.itemName,
@@ -140,7 +141,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
                 equipDefenseBonus = item.equipDefenseBonus,
                 equipSpeedcBonus = item.equipSpeedcBonus,
                 modelPrefab = item.modelPrefab
-            };
+            };*/
             //检测执行的任务中是否是添加的物品
             foreach (Model_Quest quest in Ctrl_PlayerQuest.Instance.PlayQuestList)
             {
@@ -204,6 +205,21 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
         }
 
         return null;
+    }
+    /// <summary>
+    /// 获得一个全新的Item地址
+    /// </summary>
+    /// <param name="itemID"></param>
+    /// <returns></returns>
+    public Model_Item NewItem(int itemID)
+    {
+        Model_Item item = Ctrl_InventoryManager.Instance.GetItemById(itemID);
+        return new Model_Item(item.id, item.itemName, item.itemType, item.materialType, item.consumption,
+            item.equipmentType, item.maxStack, item.currentNumber, item.buyPriceByGold, item.buyPriceByDiamond,
+            item.sellPriceByGold, item.sellPriceByDiamond, item.minLevel, item.sellable, item.tradable,
+            item.destroyable, item.description, item.sprite, item.useDestroy, item.useHealth, item.useMagic,
+            item.useExperience, item.equipHealthBonus, item.equipManaBonus, item.equipDamageBonus,
+            item.equipDefenseBonus, item.equipSpeedcBonus, item.modelPrefab, item.drawing,item.makeTime);
     }
 
 }
