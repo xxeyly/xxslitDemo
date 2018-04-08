@@ -37,14 +37,56 @@ public class Model_Item
     public int equipSpeedcBonus; //速度
     public GameObject modelPrefab; //装备模型
 
-    public override string ToString()
+    public Drawing[] drawing;//制作所需物品
+    public float makeTime;//制作需要的时间
+
+    public class Drawing
     {
-        return string.Format(
-            "Id: {0}, ItemName: {1}, ItemType: {2}, MaterialType: {3}, Consumption: {4}, EquipmentType: {5}, MaxStack: {6}, CurrentNumber: {7}, BuyPriceByGold: {8}, BuyPriceByDiamond: {9}, SellPriceByGold: {10}, SellPriceByDiamond: {11}, MinLevel: {12}, Sellable: {13}, Tradable: {14}, Destroyable: {15}, Description: {16}, Sprite: {17}, UseDestroy: {18}, UseHealth: {19}, UseMagic: {20}, UseExperience: {21}, EquipHealthBonus: {22}, EquipManaBonus: {23}, EquipDamageBonus: {24}, EquipDefenseBonus: {25}, EquipSpeedcBonus: {26}, ModelPrefab: {27}",
-            id, itemName, itemType, materialType, consumption, equipmentType, maxStack, currentNumber, buyPriceByGold,
-            buyPriceByDiamond, sellPriceByGold, sellPriceByDiamond, minLevel, sellable, tradable, destroyable,
-            description, sprite, useDestroy, useHealth, useMagic, useExperience, equipHealthBonus, equipManaBonus,
-            equipDamageBonus, equipDefenseBonus, equipSpeedcBonus, modelPrefab);
+        public int itemId;
+        public int itemCount;
+    }
+
+    public Model_Item()
+    {
+    }
+
+    public Model_Item(int id, string itemName, string itemType, string materialType, int consumption,
+        string equipmentType, int maxStack, int currentNumber, int buyPriceByGold, int buyPriceByDiamond,
+        int sellPriceByGold, int sellPriceByDiamond, int minLevel, bool sellable, bool tradable, bool destroyable,
+        string description, string sprite, bool useDestroy, int useHealth, int useMagic, int useExperience,
+        int equipHealthBonus, int equipManaBonus, int equipDamageBonus, int equipDefenseBonus, int equipSpeedcBonus,
+        GameObject modelPrefab, Drawing[] drawing,float makeTime)
+    {
+        this.id = id;
+        this.itemName = itemName;
+        this.itemType = itemType;
+        this.materialType = materialType;
+        this.consumption = consumption;
+        this.equipmentType = equipmentType;
+        this.maxStack = maxStack;
+        this.currentNumber = currentNumber;
+        this.buyPriceByGold = buyPriceByGold;
+        this.buyPriceByDiamond = buyPriceByDiamond;
+        this.sellPriceByGold = sellPriceByGold;
+        this.sellPriceByDiamond = sellPriceByDiamond;
+        this.minLevel = minLevel;
+        this.sellable = sellable;
+        this.tradable = tradable;
+        this.destroyable = destroyable;
+        this.description = description;
+        this.sprite = sprite;
+        this.useDestroy = useDestroy;
+        this.useHealth = useHealth;
+        this.useMagic = useMagic;
+        this.useExperience = useExperience;
+        this.equipHealthBonus = equipHealthBonus;
+        this.equipManaBonus = equipManaBonus;
+        this.equipDamageBonus = equipDamageBonus;
+        this.equipDefenseBonus = equipDefenseBonus;
+        this.equipSpeedcBonus = equipSpeedcBonus;
+        this.modelPrefab = modelPrefab;
+        this.drawing = drawing;
+        this.makeTime = makeTime;
     }
 
     public string ItemInfo()
@@ -203,6 +245,21 @@ public class Model_Item
         {
             tip += "燃烧时间:" + consumption.ToString() + "\n";
         }
+
         return tip;
     }
+
+    public string DrawingTootip()
+    {
+        string tip = "";
+        foreach (Drawing draw in drawing)
+        {
+            tip += Ctrl_InventoryManager.Instance.GetItemById(draw.itemId).itemName + ":" +
+                   Ctrl_BlacksmithStation.Instance.GetItemCountById(draw.itemId) + "/" + draw.itemCount + "\n";
+        }
+
+        return tip;
+    }
+
+    
 }
