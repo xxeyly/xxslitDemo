@@ -8,12 +8,13 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     [SerializeField] private GameObject NotificationLevel;
     [SerializeField] private GameObject ShopTootip;
     [SerializeField] private GameObject QuestTootip;
+    [SerializeField] private GameObject MakeTootip;
     public GameObject PickUpItem;
     public bool IsPickedItem { get; set; }
     [SerializeField] private Canvas canvas;
 
     //Tootip偏移
-    [SerializeField] private Vector2 toolTipPosionOffset = new Vector2(10, -10);
+    [SerializeField] private Vector2 toolTipPosionOffset;
     [SerializeField] public GameObject itemTootip;
     public bool isToolTipShow = false;
 
@@ -104,8 +105,8 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
             //如果我们捡起了物品，我们就要让物品跟随鼠标
             Vector2 position;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
-                Input.mousePosition, canvas.worldCamera, out position);
-            PickUpItem.GetComponent<Ctrl_PickUp>().SetLocalPosition(position);
+                Input.mousePosition, null, out position);
+            PickUpItem.GetComponent<Ctrl_PickUp>().SetLocalPosition(position + toolTipPosionOffset);
         }
 
         if (isToolTipShow)
@@ -121,6 +122,7 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
             itemTootip.GetComponent<Ctrl_ItemTootip>().HideItemTootip();
         }
     }
+
     /// <summary>
     ///  显示物品信息
     /// </summary>
@@ -128,5 +130,13 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     public void ShowItemInfo(Model_Item item)
     {
         itemTootip.GetComponent<Ctrl_ItemTootip>().ShowItemInfo(item);
+    }
+    /// <summary>
+    /// 显示制作需要的材料
+    /// </summary>
+    /// <param name="item"></param>
+    public void ShowMakeInfo(Model_Item item)
+    {
+        MakeTootip.GetComponent<Ctrl_MakeTootip>().Item = item;
     }
 }
