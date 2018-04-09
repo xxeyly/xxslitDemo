@@ -8,6 +8,7 @@ public class View_DemandItem : MonoBehaviour
     [SerializeField] private Text itemName;
     [SerializeField] private Text demandCount;
     [SerializeField] private Text currentCount;
+
     /// <summary>
     /// 初始化UI
     /// </summary>
@@ -19,4 +20,12 @@ public class View_DemandItem : MonoBehaviour
         currentCount.text = Ctrl_BlacksmithStation.Instance.GetItemCountById(drawing.itemId).ToString();
     }
 
+    private void Update()
+    {
+        if (Ctrl_TootipManager.Instance.MakeTootipIsShow())
+        {
+            currentCount.text = Ctrl_BlacksmithStation.Instance
+                .GetItemCountById(GetComponent<Ctrl_DemandItem>().Drawing.itemId).ToString();
+        }
+    }
 }
