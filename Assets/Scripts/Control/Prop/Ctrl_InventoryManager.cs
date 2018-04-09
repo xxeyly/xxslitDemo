@@ -111,37 +111,6 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
         if (emptySlot != null)
         {
             emptySlot.Item = Ctrl_InventoryManager.Instance.NewItem(item.id);
-           /* emptySlot.Item = new Model_Item
-            {
-                id = item.id,
-                itemName = item.itemName,
-                itemType = item.itemType,
-                equipmentType = item.equipmentType,
-                materialType = item.materialType,
-                consumption = item.consumption,
-                maxStack = item.maxStack,
-                currentNumber = item.currentNumber,
-                buyPriceByGold = item.buyPriceByGold,
-                buyPriceByDiamond = item.buyPriceByDiamond,
-                sellPriceByGold = item.sellPriceByGold,
-                sellPriceByDiamond = item.sellPriceByDiamond,
-                minLevel = item.minLevel,
-                sellable = item.sellable,
-                tradable = item.tradable,
-                destroyable = item.destroyable,
-                description = item.description,
-                sprite = item.sprite,
-                useDestroy = item.useDestroy,
-                useHealth = item.useHealth,
-                useMagic = item.useMagic,
-                useExperience = item.useExperience,
-                equipHealthBonus = item.equipHealthBonus,
-                equipManaBonus = item.equipManaBonus,
-                equipDamageBonus = item.equipDamageBonus,
-                equipDefenseBonus = item.equipDefenseBonus,
-                equipSpeedcBonus = item.equipSpeedcBonus,
-                modelPrefab = item.modelPrefab
-            };*/
             //检测执行的任务中是否是添加的物品
             foreach (Model_Quest quest in Ctrl_PlayerQuest.Instance.PlayQuestList)
             {
@@ -219,7 +188,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
             item.sellPriceByGold, item.sellPriceByDiamond, item.minLevel, item.sellable, item.tradable,
             item.destroyable, item.description, item.sprite, item.useDestroy, item.useHealth, item.useMagic,
             item.useExperience, item.equipHealthBonus, item.equipManaBonus, item.equipDamageBonus,
-            item.equipDefenseBonus, item.equipSpeedcBonus, item.modelPrefab, item.drawing,item.makeTime);
+            item.equipDefenseBonus, item.equipSpeedcBonus, item.modelPrefab, item.drawing,item.drawingItemId,item.makeTime);
     }
 
 }
