@@ -73,18 +73,25 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void UpdateAmount()
     {
+        if (slot.Item.currentNumber == 0)
+        {
+            IconSetNull();
+        }
+
         _Amount.text = slot.Item.currentNumber.ToString();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (View_PlayerinfoPespons.Instance.GetPlayerPackagePanelAlpha() > 0)
+        if (View_PlayerinfoPespons.Instance.PackageActivityState ||
+            View_PlayerinfoPespons.Instance.PackageAnvilState)
         {
             //鼠标右键点击
             if (eventData.button == PointerEventData.InputButton.Right)
             {
                 //如果现在手上没有物品,并且当前slot有物品
-                if (Ctrl_TootipManager.Instance.IsPickedItem == false && slot.Item != null)
+                if ((View_PlayerinfoPespons.Instance.PackageActivityState ||
+                     View_PlayerinfoPespons.Instance.PackageAnvilState) && slot.Item != null)
                 {
                     Ctrl_TootipManager.Instance.IsPickedItem = true;
                     pickupItemSlot.Item = slot.Item;
