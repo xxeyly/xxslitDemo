@@ -38,6 +38,7 @@ public class Model_Item
     public GameObject modelPrefab; //装备模型
 
     public Drawing[] drawing;//制作所需物品
+    public int drawingItemId;//设计图对应的ID
     public float makeTime;//制作需要的时间
 
     public class Drawing
@@ -55,7 +56,7 @@ public class Model_Item
         int sellPriceByGold, int sellPriceByDiamond, int minLevel, bool sellable, bool tradable, bool destroyable,
         string description, string sprite, bool useDestroy, int useHealth, int useMagic, int useExperience,
         int equipHealthBonus, int equipManaBonus, int equipDamageBonus, int equipDefenseBonus, int equipSpeedcBonus,
-        GameObject modelPrefab, Drawing[] drawing,float makeTime)
+        GameObject modelPrefab, Drawing[] drawing,int drawingItemId,float makeTime)
     {
         this.id = id;
         this.itemName = itemName;
@@ -86,6 +87,7 @@ public class Model_Item
         this.equipSpeedcBonus = equipSpeedcBonus;
         this.modelPrefab = modelPrefab;
         this.drawing = drawing;
+        this.drawingItemId = drawingItemId;
         this.makeTime = makeTime;
     }
 
