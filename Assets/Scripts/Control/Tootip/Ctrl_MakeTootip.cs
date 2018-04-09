@@ -57,6 +57,9 @@ public class Ctrl_MakeTootip : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 减少制作个数
+    /// </summary>
     public void RemoveMakeCount()
     {
         //如果大于1,代表可以减少个数 其他和增加操作一致
@@ -73,10 +76,30 @@ public class Ctrl_MakeTootip : MonoBehaviour
     /// </summary>
     public void StartMake()
     {
-        //如果满足条件
-        if (PlentyOfGoods())
+        //如果满足制作条件
+        if (PlentyOfGoods() && Ctrl_MakeQueueManager.Instance.MakeSlots.Count <= 7)
         {
-            Ctrl_MakeQueueManager.Instance.StartMake(Item,multiple);
+            //TUDO 铁匠台减去制作需求的物品
+            Ctrl_MakeSlot makeSlot = new Ctrl_MakeSlot
+            {
+                Item = Item,
+                MakeCount = multiple
+            };
+            for (int i = 0; i < multiple; i++)
+            {
+                Ctrl_BlacksmithStation.Instance.RemoveItem(makeSlot.Item.drawing);
+            }
+
+            //如果正在制作的格子不为空
+            if (Ctrl_MakeQueueManager.Instance.GetInProduction() != null)
+            {
+                Ctrl_MakeQueueManager.Instance.AddMakeSlot(makeSlot);
+            }
+            //新建一个制作格子,并且开始制作
+            else
+            {
+                Ctrl_MakeQueueManager.Instance.StartMake(makeSlot);
+            }
         }
     }
 
@@ -90,7 +113,7 @@ public class Ctrl_MakeTootip : MonoBehaviour
         foreach (Ctrl_DemandItem demandItem in productionNeeds.DemandItems)
         {
             //如果"铁匠台"内的物品小于制作所需物品,设置值为false,只要有一个不满足,就会为False
-            if (Ctrl_BlacksmithStation.Instance.GetItemCountById(demandItem.Drawing.itemId) <=
+            if (Ctrl_BlacksmithStation.Instance.GetItemCountById(demandItem.Drawing.itemId) <
                 demandItem.Drawing.itemCount)
             {
                 abundant = false;
