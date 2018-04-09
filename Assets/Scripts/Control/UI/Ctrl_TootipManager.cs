@@ -131,12 +131,39 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     {
         itemTootip.GetComponent<Ctrl_ItemTootip>().ShowItemInfo(item);
     }
+
     /// <summary>
     /// 显示制作需要的材料
     /// </summary>
     /// <param name="item"></param>
     public void ShowMakeInfo(Model_Item item)
     {
+        ShowMakeTootip();
         MakeTootip.GetComponent<Ctrl_MakeTootip>().Item = item;
+    }
+
+    /// <summary>
+    /// 制作界面是否显示
+    /// </summary>
+    /// <returns></returns>
+    public bool MakeTootipIsShow()
+    {
+        return MakeTootip.activeSelf;
+    }
+
+    /// <summary>
+    /// 显示制作面板
+    /// </summary>
+    public void ShowMakeTootip()
+    {
+        MakeTootip.SetActive(true);
+    }
+
+    /// <summary>
+    /// 隐藏制作面板
+    /// </summary>
+    public void HideMakeTootip()
+    {
+        MakeTootip.SetActive(false);
     }
 }
