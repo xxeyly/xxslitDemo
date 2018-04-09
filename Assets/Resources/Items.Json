@@ -402,11 +402,11 @@
 		"tradable": true,
 		"destroyable": true,
 		"description": "收集材料可以制作一件真正的虎皮大衣",
-		"useDestroy": true,
+		"drawingItemId": 21,
 		"drawing": [
 			{
-				"itemId": 1,
-				"itemCount": 1
+				"itemId": 20,
+				"itemCount": 3
 			}
 		],
 		"makeTime": 2,
@@ -415,5 +415,39 @@
 		"equipHealthBonus": 56,
 		"equipManaBonus": 50,
 		"sprite": "Sprites/Items/Leather HelmetDrawing"
+	},
+	{
+		"id": 20,
+		"itemName": "皮革",
+		"itemType": "Material",
+		"materialType": "Oter",
+		"maxStack": 99,
+		"currentNumber": 1,
+		"sellable": true,
+		"tradable": true,
+		"destroyable": true,
+		"description": "从野兽身上剥下来的皮革,可以打造装备",
+		"useDestroy": true,
+		"sprite": "Sprites/Items/Leather"
+	},
+	{
+		"id": 21,
+		"itemName": "虎皮帽",
+		"itemType": "Equipment",
+		"equipmentType": "Head",
+		"maxStack": 1,
+		"currentNumber": 1,
+		"buyPriceByGold": 50,
+		"buyPriceByDiamond": 0,
+		"sellPriceByGold": 25,
+		"sellPriceByDiamond": 0,
+		"minLevel": 5,
+		"sellable": true,
+		"tradable": true,
+		"destroyable": true,
+		"description": "由虎皮打造的头盔,有一定防御力",
+		"useDestroy": false,
+		"equipDefenseBonus": 40,
+		"sprite": "Sprites/Items/Leather Helmet"
 	}
 ]
