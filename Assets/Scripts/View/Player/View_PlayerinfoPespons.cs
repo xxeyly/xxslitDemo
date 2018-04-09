@@ -11,16 +11,36 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     [SerializeField] private GameObject goPlayerPackagePanel; //装备/背包系统
     [SerializeField] private GameObject goPlayerCharacterPanel; //角色属性
     [SerializeField] private GameObject goPlayerCampfirePanel; //烹饪面板
+    [SerializeField] private GameObject goPlayerAnvilPanel; //铁匠台
     [SerializeField] private GameObject goRetraitDeploiement;
 
-    [SerializeField] GameObject btnPlayerSkill;
+    [SerializeField] private GameObject btnPlayerSkill;
     [SerializeField] private GameObject btnPlayerMission;
     [SerializeField] private GameObject btnPlayerMarket;
     [SerializeField] private GameObject btnPlayerPackage;
     [SerializeField] private GameObject btnPlayerCharacter;
     [SerializeField] private GameObject btnCampfire; //烹饪按钮
+    [SerializeField] private GameObject btnAnvil; //烹饪按钮
     [SerializeField] private bool isShow = true;
     [SerializeField] private Sprite[] _HideOrShow = new Sprite[2];
+
+    private bool packageActivityState;
+
+    public bool PackageActivityState
+    {
+        get { return packageActivityState; }
+
+        set { packageActivityState = value; }
+    }
+
+    public bool PackageAnvilState
+    {
+        get { return packageAnvilState; }
+
+        set { packageAnvilState = value; }
+    }
+
+    private bool packageAnvilState;
 
     public float GetPlayerSkillPanelAlpha()
     {
@@ -56,7 +76,6 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     public void HideSkillPanel()
     {
         goPlayerSkillPanel.GetComponent<CanvasGroup>().alpha = 0;
-        goPlayerSkillPanel.GetComponent<CanvasGroup>().alpha = 0;
     }
 
     public void DisplayMissionPanel()
@@ -89,13 +108,15 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     {
         goPlayerPackagePanel.GetComponent<CanvasGroup>().alpha = 1;
         goPlayerPackagePanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        PackageActivityState = true;
     }
 
     public void HidePackagePanel()
     {
         goPlayerPackagePanel.GetComponent<CanvasGroup>().alpha = 0;
         goPlayerPackagePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        Ctrl_TootipManager.Instance.isToolTipShow = false;
+//        Ctrl_TootipManager.Instance.isToolTipShow = false;
+        PackageActivityState = false;
     }
 
     public void DisplayCharacterPanel()
@@ -122,6 +143,20 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         goPlayerCampfirePanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
+    public void DisplayAnvilPanel()
+    {
+        goPlayerAnvilPanel.GetComponent<CanvasGroup>().alpha = 1;
+        goPlayerAnvilPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        PackageAnvilState = true;
+    }
+
+    public void HideAnvilPanel()
+    {
+        goPlayerAnvilPanel.GetComponent<CanvasGroup>().alpha = 0;
+        goPlayerAnvilPanel.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        PackageAnvilState = false;
+    }
+
     private void DisyAllPanel()
     {
         btnPlayerSkill.SetActive(true);
@@ -130,6 +165,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         btnPlayerPackage.SetActive(true);
         btnPlayerCharacter.SetActive(true);
         btnCampfire.SetActive(true);
+        btnAnvil.SetActive(true);
         isShow = true;
         goRetraitDeploiement.GetComponent<Image>().sprite = _HideOrShow[1];
     }
@@ -142,6 +178,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         btnPlayerPackage.SetActive(false);
         btnPlayerCharacter.SetActive(false);
         btnCampfire.SetActive(false);
+        btnAnvil.SetActive(false);
         goRetraitDeploiement.GetComponent<Image>().sprite = _HideOrShow[0];
 
         isShow = false;
@@ -157,14 +194,5 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         {
             DisyAllPanel();
         }
-    }
-
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
