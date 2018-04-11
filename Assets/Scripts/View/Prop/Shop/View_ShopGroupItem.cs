@@ -43,6 +43,6 @@ public class View_ShopGroupItem : MonoBehaviour, IPointerExitHandler, IPointerEn
         diamodText.text = item.buyPriceByDiamond.ToString();
         icon.gameObject.SetActive(true);
         icon.sprite = Resources.Load<Sprite>(item.sprite);
-        Ctrl_ShopSlot.Instance.Item = item;
+        GetComponentInChildren<Ctrl_ShopSlot>().Item = item;
     }
 }
