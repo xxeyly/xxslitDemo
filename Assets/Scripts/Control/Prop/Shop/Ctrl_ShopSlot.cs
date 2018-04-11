@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ctrl_ShopSlot : Singleton<Ctrl_ShopSlot>
+public class Ctrl_ShopSlot : MonoBehaviour
 {
     private Model_Item item;
 
@@ -13,12 +13,5 @@ public class Ctrl_ShopSlot : Singleton<Ctrl_ShopSlot>
         set { item = value; }
     }
 
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }
