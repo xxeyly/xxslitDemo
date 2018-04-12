@@ -7,9 +7,7 @@ public class View_MaterialTootip : MonoBehaviour
 {
     [SerializeField] private Image icon;
     [SerializeField] private Text itemName;
-    [SerializeField] private Text materialAttributeOutside; //外面的文本控制大小
     [SerializeField] private Text materialAttributeInside; //里面的文本控制显示
-    [SerializeField] private Text describeOutside; //外面的文本控制大小
     [SerializeField] private Text describeInside; //里面的文本控制显示
     [SerializeField] private GameObject materialAttribute; //材料的属性 如果没有,就不显示
 
@@ -24,11 +22,9 @@ public class View_MaterialTootip : MonoBehaviour
         else
         {
             materialAttribute.SetActive(true);
-            materialAttributeOutside.text = item.MateriaTootip() + "\n";
             materialAttributeInside.text = item.MateriaTootip();
         }
 
-        describeOutside.text = item.description + "\n\n";
         describeInside.text = item.description;
     }
 }
