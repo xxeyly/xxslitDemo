@@ -217,7 +217,7 @@
 		"sellable": true,
 		"tradable": true,
 		"destroyable": true,
-		"description": "好一点的护甲,攻击+1000,防御+1000",
+		"description": "好一点的护甲,攻击+1000,防御+1000,这是设计者设计的最好护甲,所以效果很好,我打这么多字,主要是测试长文字的描述是否显示正确!!!",
 		"useDestroy": false,
 		"equipDefenseBonus": 1000,
 		"equipDamageBonus": 1000,
