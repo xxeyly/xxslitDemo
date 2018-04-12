@@ -38,9 +38,11 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
         }
     }
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         InitPool();
+
     }
 
 
