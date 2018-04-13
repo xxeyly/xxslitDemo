@@ -18,6 +18,140 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
     [SerializeField] private Model_Item trinketEquipment;
     [SerializeField] private Model_Item weaponEquipment;
     [SerializeField] private Model_Item shieldEquipment;
+    private List<Model_Archiving.Equip> equips;
+
+
+    public List<Model_Archiving.Equip> GetEquipData()
+    {
+        equips = new List<Model_Archiving.Equip>();
+        if (headEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Head,
+                itemId = headEquipment.id
+            });
+        }
+
+        if (neckEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Neck,
+                itemId = neckEquipment.id
+            });
+        }
+
+        if (shouldersEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Shoulders,
+                itemId = shouldersEquipment.id
+            });
+        }
+
+        if (chestEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Chest,
+                itemId = chestEquipment.id
+            });
+        }
+
+        if (backEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Back,
+                itemId = backEquipment.id
+            });
+        }
+
+        if (bracerEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Bracer,
+                itemId = bracerEquipment.id
+            });
+        }
+
+        if (glovesEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Gloves,
+                itemId = glovesEquipment.id
+            });
+        }
+
+        if (beltEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Belt,
+                itemId = beltEquipment.id
+            });
+        }
+
+        if (pantsEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Pants,
+                itemId = pantsEquipment.id
+            });
+        }
+
+        if (bootsEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Boots,
+                itemId = bootsEquipment.id
+            });
+        }
+
+        if (fingerEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Finger,
+                itemId = fingerEquipment.id
+            });
+        }
+
+        if (trinketEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Trinket,
+                itemId = trinketEquipment.id
+            });
+        }
+
+        if (weaponEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Weapon,
+                itemId = weaponEquipment.id
+            });
+        }
+
+        if (shieldEquipment != null)
+        {
+            equips.Add(new Model_Archiving.Equip
+            {
+                equip = GlobalParametr.EquipmentType.Shield,
+                itemId = shieldEquipment.id
+            });
+        }
+
+        return equips;
+    }
 
     public Model_Item HeadEquipment
     {
@@ -34,7 +168,11 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
     {
         get { return neckEquipment; }
 
-        set { WearableEquipment(neckEquipment, value); }
+        set
+        {
+            WearableEquipment(neckEquipment, value);
+            neckEquipment = value;
+        }
     }
 
     public Model_Item ShouldersEquipment
@@ -168,6 +306,8 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             shieldEquipment = value;
         }
     }
+
+
     /// <summary>
     /// 如果newItem==null,代表脱下装备,如果不为空,判断当前装备栏是否有装备
     /// 如果无,直接增加装备属性,如果有,判断是否是同一间装备,如果是跳过,如果
