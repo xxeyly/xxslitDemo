@@ -1,4 +1,6 @@
-﻿public class Ctrl_HeroProperty : Singleton<Ctrl_HeroProperty>
+﻿using System.Collections.Generic;
+
+public class Ctrl_HeroProperty : Singleton<Ctrl_HeroProperty>
 {
     //核心数据
     public int Health; //健康
@@ -335,6 +337,11 @@
         return PlayerExtenalDataProxy.GetInstance().GetLevelExp();
     }
 
+    public void SetCurrentExp(int exp)
+    {
+        PlayerExtenalDataProxy.GetInstance().SetCurrentExp(exp);
+    }
+
     #endregion
 
     #region 杀敌数量
@@ -361,6 +368,11 @@
     public int GetLevel()
     {
         return PlayerExtenalDataProxy.GetInstance().GetLevel();
+    }
+
+    public void SetLevel(int level)
+    {
+        PlayerExtenalDataProxy.GetInstance().SetLevel(level);
     }
 
     #endregion
@@ -541,4 +553,34 @@
     }
 
     #endregion
+    /// <summary>
+    /// 获得当前游戏数据,方便存储
+    /// </summary>
+    /// <returns></returns>
+    public Model_Archiving GetHeroCurrentData()
+    {
+        Model_Archiving archiving = new Model_Archiving();
+        archiving.x = (int) transform.position.x;
+        archiving.y = (int) transform.position.y;
+        archiving.z = (int) transform.position.z;
+        archiving.hp = GetCurrentHealth();
+        archiving.mp = GetMaxMagic();
+        archiving.exp = GetExp();
+        archiving.gold = GetGold();
+        archiving.diamod = GetDiamods();
+        archiving.level = GetLevel();
+
+        foreach (Ctrl_Slot ctrlSlot in Ctrl_InventoryManager.Instance.ActiveSlot())
+        {
+            archiving.items.Add(new Model_Archiving.Item()
+            {
+                itemId = ctrlSlot.Item.id,
+                currentCount = ctrlSlot.Item.currentNumber
+            });
+        }
+
+        archiving.equips = GetComponent<Ctrl_PlayerEquipmentProperty>().GetEquipData();
+
+        return archiving;
+    }
 }
