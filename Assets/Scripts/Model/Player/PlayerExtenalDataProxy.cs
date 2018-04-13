@@ -92,9 +92,19 @@ public class PlayerExtenalDataProxy : PlayerExtenalData
         Ctrl_TootipManager.Instance.ShowNotificationLevel(Level.ToString());
     }
 
+    public void SetLevel(int level)
+    {
+        base.Level = level;
+        base.LevelExperience = PlayerUpgradeRule._DicLevel[base.Level];
+    }
     public int GetLevel()
     {
         return base.Level;
+    }
+
+    public void SetCurrentExp(int exp)
+    {
+        base.Experience = exp;
     }
 
     #endregion
