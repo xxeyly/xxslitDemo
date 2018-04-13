@@ -12,6 +12,7 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
     [SerializeField] private GameObject goPlayerCharacterPanel; //角色属性
     [SerializeField] private GameObject goPlayerCampfirePanel; //烹饪面板
     [SerializeField] private GameObject goPlayerAnvilPanel; //铁匠台
+    [SerializeField] private GameObject goWindowMenuPanel;
     [SerializeField] private GameObject goRetraitDeploiement;
 
     [SerializeField] private GameObject btnPlayerSkill;
@@ -157,6 +158,16 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         PackageAnvilState = false;
     }
 
+    public void DisplayWindMenuPanel()
+    {
+        goWindowMenuPanel.SetActive(true);
+    }
+
+    public void HideWindMenuPanel()
+    {
+        goWindowMenuPanel.SetActive(false);
+    }
+
     private void DisyAllPanel()
     {
         btnPlayerSkill.SetActive(true);
@@ -193,6 +204,14 @@ public class View_PlayerinfoPespons : Singleton<View_PlayerinfoPespons>
         else
         {
             DisyAllPanel();
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            goWindowMenuPanel.SetActive(!goWindowMenuPanel.activeSelf);
         }
     }
 }
