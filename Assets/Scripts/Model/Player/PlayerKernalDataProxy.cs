@@ -111,6 +111,14 @@ public class PlayerKernalDataProxy : PlayerKernalData
         base.MaxHealth -= values;
     }
     /// <summary>
+    /// 设置当前生命值
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetCurrentHealth(int value)
+    {
+        base.Health = value;
+    }
+    /// <summary>
     /// 获得最大生命数值
     /// </summary>
     /// <returns></returns>
@@ -191,6 +199,15 @@ public class PlayerKernalDataProxy : PlayerKernalData
     public int GetMaxMagic()
     {
         return base.MaxMagic;
+    }
+    /// <summary>
+    /// 设置当前魔法值
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public void SetCurrentMagic(int value)
+    {
+        base.Magic = value;
     }
 
     #endregion
