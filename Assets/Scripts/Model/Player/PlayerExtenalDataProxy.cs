@@ -95,7 +95,7 @@ public class PlayerExtenalDataProxy : PlayerExtenalData
     public void SetLevel(int level)
     {
         base.Level = level;
-        base.LevelExperience = PlayerUpgradeRule._DicLevel[base.Level];
+//        base.LevelExperience = PlayerUpgradeRule._DicLevel[base.Level];
     }
     public int GetLevel()
     {
