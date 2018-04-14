@@ -11,7 +11,6 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
     [SerializeField] private List<ObjPool> goList;
     private Dictionary<GameObject, List<GameObject>> idleDic = new Dictionary<GameObject, List<GameObject>>();
     private Dictionary<GameObject, List<GameObject>> usingDic = new Dictionary<GameObject, List<GameObject>>();
-
     /// <summary>
     /// 初始化对象池
     /// </summary>
@@ -28,7 +27,7 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
                 {
                     Debug.Log("初始化失败");
                 }
-
+                item.transform.parent = this.transform;
                 item.gameObject.SetActive(false);
                 temIdle.Add(item);
             }
@@ -71,7 +70,7 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
             }
             else
             {
-                Debug.Log("池子里没有对象了,正在构建");
+//                Debug.Log("池子里没有对象了,正在构建");
                 //如果不是锁定状态,增加数量
                 if (!lockPoolSize)
                 {
