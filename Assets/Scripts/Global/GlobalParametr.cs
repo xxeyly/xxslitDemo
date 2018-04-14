@@ -143,7 +143,10 @@ public class GlobalParametr : MonoBehaviour
     public delegate void del_ShopSlot(Model_Item item);
 
     public delegate void del_EnemyBloodGroove(float value);
-
+    /// <summary>
+    /// 物品/存档等敏感操作,询问是否保留时的委托
+    /// </summary>
+    public delegate void del_AgreeCancel();
     public class KeyValuesUpdate
     {
         private string _Key;
@@ -174,6 +177,7 @@ public class GlobalParametr : MonoBehaviour
     public const float SKILLSHOWTIME = 0.3f;
     public const float SHOPSHOWTIME = 0.3f;
     public const float STEAMINGTIME = 3f;
+    public const string SAVEPATH = "/Resources/" + "/Data";
     private static Dictionary<int, string> enemyDictionary;
     private static Dictionary<int, string> npcDictionary;
     private static Dictionary<int, int> cookingProductDictionary;
