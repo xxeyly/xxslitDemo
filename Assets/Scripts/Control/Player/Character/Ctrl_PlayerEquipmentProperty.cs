@@ -32,6 +32,15 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
                 itemId = headEquipment.id
             });
         }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Head,
+                itemId = -1
+            });
+        }
+
 
         if (neckEquipment != null)
         {
@@ -39,6 +48,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             {
                 equip = GlobalParametr.EquipmentType.Neck,
                 itemId = neckEquipment.id
+            });
+        }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Neck,
+                itemId = -1
             });
         }
 
@@ -50,6 +67,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
                 itemId = shouldersEquipment.id
             });
         }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Shoulders,
+                itemId = -1
+            });
+        }
 
         if (chestEquipment != null)
         {
@@ -57,6 +82,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             {
                 equip = GlobalParametr.EquipmentType.Chest,
                 itemId = chestEquipment.id
+            });
+        }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Chest,
+                itemId = -1
             });
         }
 
@@ -68,6 +101,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
                 itemId = backEquipment.id
             });
         }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Back,
+                itemId = -1
+            });
+        }
 
         if (bracerEquipment != null)
         {
@@ -75,6 +116,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             {
                 equip = GlobalParametr.EquipmentType.Bracer,
                 itemId = bracerEquipment.id
+            });
+        }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Bracer,
+                itemId = -1
             });
         }
 
@@ -86,6 +135,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
                 itemId = glovesEquipment.id
             });
         }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Gloves,
+                itemId = -1
+            });
+        }
 
         if (beltEquipment != null)
         {
@@ -93,6 +150,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             {
                 equip = GlobalParametr.EquipmentType.Belt,
                 itemId = beltEquipment.id
+            });
+        }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Belt,
+                itemId = -1
             });
         }
 
@@ -104,6 +169,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
                 itemId = pantsEquipment.id
             });
         }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Pants,
+                itemId = -1
+            });
+        }
 
         if (bootsEquipment != null)
         {
@@ -111,6 +184,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             {
                 equip = GlobalParametr.EquipmentType.Boots,
                 itemId = bootsEquipment.id
+            });
+        }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Boots,
+                itemId = -1
             });
         }
 
@@ -122,6 +203,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
                 itemId = fingerEquipment.id
             });
         }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Finger,
+                itemId = -1
+            });
+        }
 
         if (trinketEquipment != null)
         {
@@ -129,6 +218,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             {
                 equip = GlobalParametr.EquipmentType.Trinket,
                 itemId = trinketEquipment.id
+            });
+        }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Trinket,
+                itemId = -1
             });
         }
 
@@ -140,6 +237,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
                 itemId = weaponEquipment.id
             });
         }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Weapon,
+                itemId = -1
+            });
+        }
 
         if (shieldEquipment != null)
         {
@@ -147,6 +252,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             {
                 equip = GlobalParametr.EquipmentType.Shield,
                 itemId = shieldEquipment.id
+            });
+        }
+        else
+        {
+            equips.Add(new Model_Archiving.Equip()
+            {
+                equip = GlobalParametr.EquipmentType.Shield,
+                itemId = -1
             });
         }
 
@@ -317,7 +430,14 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
     /// <param name="newItem">新装备</param>
     private void WearableEquipment(Model_Item currentItem, Model_Item newItem)
     {
-        if (newItem == null)
+        //都为空,直接返回
+        if (newItem == null && currentItem == null)
+        {
+            return;
+        }
+
+        //如果新装备为空,旧装备不为空,脱下装备
+        if (newItem == null && currentItem != null)
         {
             //脱掉装备
             Ctrl_HeroProperty.Instance.DecreaseATK(currentItem.equipDamageBonus);
@@ -326,36 +446,36 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             Ctrl_HeroProperty.Instance.DecreaseMaxHealth(currentItem.equipHealthBonus);
             Ctrl_HeroProperty.Instance.DecreaseMaxMagic(currentItem.equipManaBonus);
         }
-        else
+        //如果新装备不为空,旧装备为空,穿上装备
+        if (newItem != null && currentItem == null)
         {
-            if (currentItem == null)
-            {
-                Ctrl_HeroProperty.Instance.AddATK(newItem.equipDamageBonus);
-                Ctrl_HeroProperty.Instance.AddDEF(newItem.equipDefenseBonus);
-                Ctrl_HeroProperty.Instance.AddDEX(newItem.equipSpeedcBonus);
-                Ctrl_HeroProperty.Instance.IncreaseMaxHealth(newItem.equipHealthBonus);
-                Ctrl_HeroProperty.Instance.IncreaseMaxMagic(newItem.equipManaBonus);
-            }
-            else
-            {
-                if (currentItem == newItem)
-                {
-                    return;
-                }
+            //穿上新装备
+            Ctrl_HeroProperty.Instance.AddATK(newItem.equipDamageBonus);
+            Ctrl_HeroProperty.Instance.AddDEF(newItem.equipDefenseBonus);
+            Ctrl_HeroProperty.Instance.AddDEX(newItem.equipSpeedcBonus);
+            Ctrl_HeroProperty.Instance.IncreaseMaxHealth(newItem.equipHealthBonus);
+            Ctrl_HeroProperty.Instance.IncreaseMaxMagic(newItem.equipManaBonus);
+        }
 
-                //先脱掉装备
-                Ctrl_HeroProperty.Instance.DecreaseATK(currentItem.equipDamageBonus);
-                Ctrl_HeroProperty.Instance.DecreaseDEF(currentItem.equipDefenseBonus);
-                Ctrl_HeroProperty.Instance.DecreaseDEX(currentItem.equipSpeedcBonus);
-                Ctrl_HeroProperty.Instance.DecreaseMaxHealth(currentItem.equipHealthBonus);
-                Ctrl_HeroProperty.Instance.DecreaseMaxMagic(currentItem.equipManaBonus);
-                //穿上新装备
-                Ctrl_HeroProperty.Instance.AddATK(newItem.equipDamageBonus);
-                Ctrl_HeroProperty.Instance.AddDEF(newItem.equipDefenseBonus);
-                Ctrl_HeroProperty.Instance.AddDEX(newItem.equipSpeedcBonus);
-                Ctrl_HeroProperty.Instance.IncreaseMaxHealth(newItem.equipHealthBonus);
-                Ctrl_HeroProperty.Instance.IncreaseMaxMagic(newItem.equipManaBonus);
+        if (currentItem != null && newItem != null)
+        {
+            if (currentItem.id == newItem.id)
+            {
+                return;
             }
+
+            //先脱掉装备
+            Ctrl_HeroProperty.Instance.DecreaseATK(currentItem.equipDamageBonus);
+            Ctrl_HeroProperty.Instance.DecreaseDEF(currentItem.equipDefenseBonus);
+            Ctrl_HeroProperty.Instance.DecreaseDEX(currentItem.equipSpeedcBonus);
+            Ctrl_HeroProperty.Instance.DecreaseMaxHealth(currentItem.equipHealthBonus);
+            Ctrl_HeroProperty.Instance.DecreaseMaxMagic(currentItem.equipManaBonus);
+            //穿上新装备
+            Ctrl_HeroProperty.Instance.AddATK(newItem.equipDamageBonus);
+            Ctrl_HeroProperty.Instance.AddDEF(newItem.equipDefenseBonus);
+            Ctrl_HeroProperty.Instance.AddDEX(newItem.equipSpeedcBonus);
+            Ctrl_HeroProperty.Instance.IncreaseMaxHealth(newItem.equipHealthBonus);
+            Ctrl_HeroProperty.Instance.IncreaseMaxMagic(newItem.equipManaBonus);
         }
     }
 }
