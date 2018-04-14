@@ -95,6 +95,15 @@ public class Ctrl_HeroProperty : Singleton<Ctrl_HeroProperty>
         return PlayerKernalDataProxy.GetInstance().GetMaxHealth();
     }
 
+    /// <summary>
+    /// 设置当前生命值
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetCurrentHealth(int value)
+    {
+        PlayerKernalDataProxy.GetInstance().SetCurrentHealth(value);
+    }
+
     #endregion
 
     #region 魔法数值操作 
@@ -151,6 +160,14 @@ public class Ctrl_HeroProperty : Singleton<Ctrl_HeroProperty>
     public int GetMaxMagic()
     {
         return PlayerKernalDataProxy.GetInstance().GetMaxMagic();
+    }
+    /// <summary>
+    /// 设置当前魔法值
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetCurrentMagic(int value)
+    {
+        PlayerKernalDataProxy.GetInstance().SetCurrentMagic(value);
     }
 
     #endregion
@@ -553,6 +570,7 @@ public class Ctrl_HeroProperty : Singleton<Ctrl_HeroProperty>
     }
 
     #endregion
+
     /// <summary>
     /// 获得当前游戏数据,方便存储
     /// </summary>
