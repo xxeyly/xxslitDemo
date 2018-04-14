@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
 {
-    [SerializeField] private GameObject Notification;
-    [SerializeField] private GameObject NotificationLevel;
-    [SerializeField] private GameObject ShopTootip;
-    [SerializeField] private GameObject QuestTootip;
-    [SerializeField] private GameObject MakeTootip;
+    [SerializeField] private GameObject Notification; //普通弹窗
+    [SerializeField] private GameObject NotificationLevel; //升级弹出
+    [SerializeField] private GameObject ShopTootip; //商店购买弹窗
+    [SerializeField] private GameObject QuestTootip; //任务弹窗
+    [SerializeField] private GameObject MakeTootip; //谈话弹窗
+    [SerializeField] private GameObject AgreeCancelTootip; //保留还是丢弃弹窗
+    [SerializeField] private GameObject PlayerReadingTootip; //保留还是丢弃弹窗
+
     public GameObject PickUpItem;
     public bool IsPickedItem { get; set; }
+
+    public GameObject AgreeCancel
+    {
+        get { return AgreeCancelTootip; }
+    }
+
     [SerializeField] private Canvas canvas;
 
     //Tootip偏移
@@ -165,5 +174,40 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     public void HideMakeTootip()
     {
         MakeTootip.SetActive(false);
+    }
+
+    /// <summary>
+    /// 显示保留/丢弃弹窗
+    /// </summary>
+    public void ShowAgreeCancel(string titleContent)
+    {
+        AgreeCancelTootip.GetComponent<Ctrl_AgreeCancelTootip>().ChangeTitleContent(titleContent);
+        AgreeCancelTootip.SetActive(true);
+    }
+
+    /// <summary>
+    /// 隐藏保留/丢弃弹窗
+    /// </summary>
+    public void HideAgreeCancel()
+    {
+        AgreeCancelTootip.SetActive(false);
+    }
+
+    /// <summary>
+    /// 显示存取档界面
+    /// </summary>
+    /// <param name="isArchiving"></param>
+    public void ShowPlayerReadingTootip(bool isArchiving)
+    {
+        PlayerReadingTootip.SetActive(true);
+        PlayerReadingTootip.GetComponent<Ctrl_PlayerAccessFile>().IsArchiving = isArchiving;
+    }
+
+    /// <summary>
+    /// 隐藏存取档界面
+    /// </summary>
+    public void HidePlayerReadingTootip()
+    {
+        PlayerReadingTootip.SetActive(false);
     }
 }
