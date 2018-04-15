@@ -102,6 +102,7 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
     /// <param name="go"></param>
     public void Push(GameObject go)
     {
+        go.transform.parent = this.transform;
         go.SetActive(false);
         if (usingDic.ContainsKey(go))
         {
