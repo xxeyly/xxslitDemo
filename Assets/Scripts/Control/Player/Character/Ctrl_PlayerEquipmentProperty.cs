@@ -18,6 +18,7 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
     [SerializeField] private Model_Item trinketEquipment;
     [SerializeField] private Model_Item weaponEquipment;
     [SerializeField] private Model_Item shieldEquipment;
+    [SerializeField] private Transform right_Weapon_Skeleton;
     private List<Model_Archiving.Equip> equips;
 
 
@@ -405,6 +406,30 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
         set
         {
             WearableEquipment(weaponEquipment, value);
+            if (value != null)
+            {
+                if (weaponEquipment != null)
+                {
+                    if (weaponEquipment.id != value.id)
+                    {
+                        Destroy(right_Weapon_Skeleton.GetChild(0).gameObject); //摧毁手上的物品
+                        GameObject weapon = Instantiate(Resources.Load<GameObject>(value.modelPrefab),
+                            Vector3.zero, Quaternion.identity, right_Weapon_Skeleton);
+                        weapon.transform.localRotation = Quaternion.identity;
+                        weapon.transform.localPosition = Vector3.zero;
+                    }
+                }
+                else
+                {
+                    Destroy(right_Weapon_Skeleton.GetChild(0).gameObject); //摧毁手上的物品
+                    GameObject weapon = Instantiate(Resources.Load<GameObject>(value.modelPrefab),
+                        Vector3.zero, Quaternion.identity, right_Weapon_Skeleton);
+                    weapon.transform.localRotation = Quaternion.identity;
+                    weapon.transform.localPosition = Vector3.zero;
+                }
+            }
+
+
             weaponEquipment = value;
         }
     }
@@ -446,6 +471,7 @@ public class Ctrl_PlayerEquipmentProperty : Singleton<Ctrl_PlayerEquipmentProper
             Ctrl_HeroProperty.Instance.DecreaseMaxHealth(currentItem.equipHealthBonus);
             Ctrl_HeroProperty.Instance.DecreaseMaxMagic(currentItem.equipManaBonus);
         }
+
         //如果新装备不为空,旧装备为空,穿上装备
         if (newItem != null && currentItem == null)
         {
