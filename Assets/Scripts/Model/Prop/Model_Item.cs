@@ -35,7 +35,7 @@ public class Model_Item
     public int equipDamageBonus; //攻击
     public int equipDefenseBonus; //防御
     public int equipSpeedcBonus; //速度
-    public GameObject modelPrefab; //装备模型
+    public string modelPrefab; //装备模型
 
     public Drawing[] drawing;//制作所需物品
     public int drawingItemId;//设计图对应的ID
@@ -56,7 +56,7 @@ public class Model_Item
         int sellPriceByGold, int sellPriceByDiamond, int minLevel, bool sellable, bool tradable, bool destroyable,
         string description, string sprite, bool useDestroy, int useHealth, int useMagic, int useExperience,
         int equipHealthBonus, int equipManaBonus, int equipDamageBonus, int equipDefenseBonus, int equipSpeedcBonus,
-        GameObject modelPrefab, Drawing[] drawing,int drawingItemId,int makeTime)
+        string modelPrefab, Drawing[] drawing,int drawingItemId,int makeTime)
     {
         this.id = id;
         this.itemName = itemName;
