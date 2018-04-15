@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 冥府守门狗属性脚本
@@ -12,6 +13,9 @@ public class Ctrl_Enemy_Property : MonoBehaviour
     [SerializeField] private int intCurrentHealth;
     [SerializeField] public int intDefender = 20;
     [SerializeField] public int intAttack = 20;
+    [SerializeField] private GameObject hudText;
+    [SerializeField] private Vector3 offset;
+
     public float AttackCD = 2;
     public float AttackTimer = 0;
 
@@ -29,6 +33,7 @@ public class Ctrl_Enemy_Property : MonoBehaviour
 
         set { _CurrentState = value; }
     }
+
     /// <summary>
     /// 当前健康值
     /// </summary>
@@ -52,6 +57,7 @@ public class Ctrl_Enemy_Property : MonoBehaviour
     void Update()
     {
     }
+
     /// <summary>
     /// 怪物收到伤害
     /// </summary>
@@ -62,10 +68,23 @@ public class Ctrl_Enemy_Property : MonoBehaviour
         if (hurtNumber <= intDefender)
         {
             IntCurrentHealth -= 1;
+            GameObject hub = ObjectPoolTool.Instance.Pop(hudText);
+            hub.SetActive(true);
+            hub.transform.parent = Ctrl_TootipManager.Instance.UICanvas;
+            hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
+            hub.GetComponent<Text>().text = "-" + 1;
+            hub.GetComponent<View_HubText>().ShowHud();
         }
         else
         {
-            IntCurrentHealth -= (hurtNumber - 20);
+
+            IntCurrentHealth -= (hurtNumber - intDefender);
+            GameObject hub = ObjectPoolTool.Instance.Pop(hudText);
+            hub.SetActive(true);
+            hub.transform.parent = Ctrl_TootipManager.Instance.UICanvas;
+            hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
+            hub.GetComponent<Text>().text = "-" + (hurtNumber - intDefender);
+            hub.GetComponent<View_HubText>().ShowHud();
             if (IntCurrentHealth <= 0)
             {
                 //死亡取消碰撞器
