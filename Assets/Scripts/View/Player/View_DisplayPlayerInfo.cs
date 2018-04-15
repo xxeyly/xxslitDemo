@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DuloGames.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,8 +14,8 @@ public class View_DisplayPlayerInfo : MonoBehaviour
     public Text TextMaxMpByScreen; //最大魔法值
     public Text TextExpByScreen; //经验数值
     public Text TextGoldByScreen; //金币
-    public UIProgressBar SliderCyrrentHp; //
-    public UIProgressBar SliderCyrrentMp; //
+    public Image SliderCyrrentHp; //
+    public Image SliderCyrrentMp; //
 
     public Text TextDiamondsByScreen; //钻石
     //玩家详细信息
