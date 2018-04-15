@@ -11,7 +11,6 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     [SerializeField] private GameObject MakeTootip; //谈话弹窗
     [SerializeField] private GameObject AgreeCancelTootip; //保留还是丢弃弹窗
     [SerializeField] private GameObject PlayerReadingTootip; //保留还是丢弃弹窗
-
     public GameObject PickUpItem;
     public bool IsPickedItem { get; set; }
 
@@ -21,7 +20,13 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     }
 
     [SerializeField] private Canvas canvas;
-
+    public Transform UICanvas
+    {
+        get
+        {
+            return canvas.transform;
+        }
+    }
     //Tootip偏移
     [SerializeField] private Vector2 toolTipPosionOffset;
     [SerializeField] public GameObject itemTootip;
