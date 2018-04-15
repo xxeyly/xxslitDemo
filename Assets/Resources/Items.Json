@@ -200,7 +200,8 @@
 		"description": "普普通通的大剑,攻击+100",
 		"useDestroy": false,
 		"equipDamageBonus": 100,
-		"sprite": "Sprites/Items/b103_1"
+		"sprite": "Sprites/Items/b103_1",
+		"modelPrefab": "Weapon/sword01"
 	},
 	{
 		"id": 11,
@@ -449,5 +450,26 @@
 		"useDestroy": false,
 		"equipDefenseBonus": 40,
 		"sprite": "Sprites/Items/Leather Helmet"
+	},
+	{
+		"id": 22,
+		"itemName": "GM之剑",
+		"itemType": "Equipment",
+		"equipmentType": "Weapon",
+		"maxStack": 1,
+		"currentNumber": 1,
+		"buyPriceByGold": 500,
+		"buyPriceByDiamond": 0,
+		"sellPriceByGold": 25,
+		"sellPriceByDiamond": 0,
+		"minLevel": 5,
+		"sellable": true,
+		"tradable": true,
+		"destroyable": true,
+		"description": "GM使用的剑,攻击+10000",
+		"useDestroy": false,
+		"equipDamageBonus": 10000,
+		"sprite": "Sprites/Items/GM",
+		"modelPrefab": "Weapon/Dragonblade"
 	}
 ]
