@@ -18,11 +18,6 @@ public class Ctrl_Enemy_Animation : MonoBehaviour
         StartCoroutine(PlayEnemyAnimation());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-//        Debug.Log(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
-    }
 
     IEnumerator PlayEnemyAnimation()
     {
@@ -33,35 +28,44 @@ public class Ctrl_Enemy_Animation : MonoBehaviour
             switch (enemyProperty.CurrentState)
             {
                 case GlobalParametr.SimplyEnemyState.Idle:
-                    anim.SetFloat("MoveSpeed", 0);
-                    anim.SetBool("Attack", false);
+                    anim.SetBool("Idle", true);
+                    anim.SetBool("Walk", false);
+                    anim.SetBool("Run", false);
                     break;
                 case GlobalParametr.SimplyEnemyState.Walking:
-                    anim.SetFloat("MoveSpeed", 1);
-                    anim.SetBool("Attack", false);
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Walk", true);
+                    anim.SetBool("Run", false);
 
+                    break;
+                case GlobalParametr.SimplyEnemyState.Run:
+                    anim.SetBool("Run", true);
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Walk", false);
                     break;
                 case GlobalParametr.SimplyEnemyState.Attack:
-                    anim.SetFloat("MoveSpeed", 0);
-                    anim.SetBool("Attack", true);
-                    enemyProperty.AttackTimer = 0;
+                    anim.SetBool("Run", false);
+                    if (enemyProperty.isPlayAnim())
+                    {
+                        anim.SetTrigger("Attack");
+                        enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Idle;
+                    }
+
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Walk", false);
+
                     break;
                 case GlobalParametr.SimplyEnemyState.Hurt:
-                    if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "getHitNormal")
-                    {
-                        anim.SetTrigger("Hurt");
-                    }
-
+                    anim.SetTrigger("GetHit");
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Walk", false);
+                    anim.SetBool("Run", false);
+                    enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Idle;
                     break;
                 case GlobalParametr.SimplyEnemyState.Death:
-                    if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "deathAggressive")
-                    {
-                        anim.SetTrigger("Dead");
-                    }
-
+                    anim.SetTrigger("Death");
+                    StopAllCoroutines();
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
     }
