@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Ctrl_PlayerAccessFile : Singleton<Ctrl_PlayerAccessFile>
 {
-    [SerializeField] private GameObject archivingItem; //存取档的Item
     [SerializeField] private Transform content; //存取档放置区
     private Model_Archiving currentArchiving; //当前存档
     [SerializeField] private bool isArchiving; //当前是存档还是读档
@@ -49,7 +48,7 @@ public class Ctrl_PlayerAccessFile : Singleton<Ctrl_PlayerAccessFile>
         yield return new WaitForSeconds(0.1f);
         for (int i = 0; i < 20; i++)
         {
-            GameObject archivingItem = ObjectPoolTool.Instance.Pop(this.archivingItem);
+            GameObject archivingItem = ObjectPoolTool.Instance.Pop(ObjectPoolTool.Instance.GetObject(objPool.ArchivingItem));
             archivingItem.SetActive(true);
             archivingItem.transform.parent = content;
             archivingItem.transform.localScale = Vector3.one;
