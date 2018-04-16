@@ -1,118 +1,267 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ctrl_Enemy_AI : MonoBehaviour
 {
     private GameObject _GoHero; //主角
     public float FloMoveSpeed = 5f;
     private Ctrl_Enemy_Property enemyProperty; //属性脚本
-    [SerializeField] private float FloMoveingDistance = 5;
-    [SerializeField] private float FloAttackDistance = 2;
+    [SerializeField] private float FloMoveingDistance = 5; //移动距离
+    [SerializeField] private float FloAttackDistance = 2; //攻击距离
+
+    private GameObject playerUnit; //获取玩家单位
+    private Vector3 initialPosition; //初始位置
+
+    public float wanderRadius; //游走半径，移动状态下，如果超出游走半径会返回出生位置
+    public float defendRadius; //自卫半径，玩家进入后怪物会追击玩家，当距离<攻击距离则会发动攻击（或者触发战斗）
+    public float chaseRadius; //追击半径，当怪物超出追击半径后会放弃追击，返回追击起始位置
+
+    public float attackRange; //攻击距离
+    public float walkSpeed; //移动速度
+    public float runSpeed; //跑动速度
+    public float turnSpeed; //转身速度，建议0.1
+
+    public int[] actionWeight = {1, 2}; //设置待机时各种动作的权重，顺序依次为呼吸、观察、移动
 
 
+    private float diatanceToPlayer; //怪物与玩家的距离
+    private float diatanceToInitial; //怪物与初始位置的距离
+    private Quaternion targetRotation; //怪物的目标朝向
     private CharacterController _cc; //角色控制器
 
     // Use this for initialization
     void Start()
     {
-        _GoHero = GameObject.FindGameObjectWithTag("Player");
-        enemyProperty = gameObject.GetComponent<Ctrl_Enemy_Property>();
-        _cc = gameObject.GetComponent<CharacterController>();
-        StartCoroutine(ThinkProcess());
-        StartCoroutine(MoveingProcess());
-    }
+        //怪物属性脚本
+        enemyProperty = GetComponent<Ctrl_Enemy_Property>();
+        //怪物控制器
+        _cc = GetComponent<CharacterController>();
+        playerUnit = GameObject.FindGameObjectWithTag("Player");
+        //保存初始位置信息
+        initialPosition = gameObject.GetComponent<Transform>().position;
 
-    // Update is called once per frame
-    void Update()
-    {
-        enemyProperty.AttackTimer += Time.deltaTime;
+        //检查并修正怪物设置
+        //1. 攻击距离不大于自卫半径，否则就无法触发追击状态，直接开始战斗了
+        attackRange = Mathf.Min(defendRadius, attackRange);
+        //2. 游走半径不大于追击半径，否则怪物可能刚刚开始追击就返回出生点
+        wanderRadius = Mathf.Min(chaseRadius, wanderRadius);
+
+        //随机一个待机动作
+        RandomAction();
+        StartCoroutine(EnemyAi());
     }
 
     /// <summary>
-    /// 思考协成
+    /// 根据权重随机待机指令
     /// </summary>
-    /// <returns></returns>
-    IEnumerator ThinkProcess()
+    void RandomAction()
     {
-        yield return new WaitForSeconds(1f);
+        //更新行动时间
+        enemyProperty.LastActTime = 0;
+        //根据权重随机
+        int number = Random.Range(0, actionWeight[0] + actionWeight[1]);
+        if (number == actionWeight[0])
+        {
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Idle;
+        }
+        else
+        {
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Walking;
+            //随机一个朝向
+            targetRotation = Quaternion.Euler(0, Random.Range(1, 5) * 90, 0);
+            transform.rotation = targetRotation;
+        }
+    }
+
+    IEnumerator EnemyAi()
+    {
+        yield return new WaitForSeconds(enemyProperty.ActRestTme);
+
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            if (enemyProperty.CurrentState != GlobalParametr.SimplyEnemyState.Death)
+            switch (enemyProperty.CurrentState)
             {
-                //得到当前主角方位
-                Vector3 VecHero = _GoHero.transform.position;
-                //得到与主角的距离
-                float FloDistance = Vector3.Distance(VecHero, transform.position);
+                //待机状态，等待actRestTme后重新随机指令
+                case GlobalParametr.SimplyEnemyState.Idle:
+                    if (enemyProperty.isPlayAnim())
+                    {
+                        RandomAction(); //随机切换指令
+                    }
 
-                //判断距离
-                if (FloDistance < FloAttackDistance)
-                {
-                    //攻击
-                    if (enemyProperty.AttackTimer >= enemyProperty.AttackCD)
+                    //该状态下的检测指令
+                    WanderRadiusCheck();
+                    break;
+
+                //游走，根据状态随机时生成的目标位置修改朝向，并向前移动
+                case GlobalParametr.SimplyEnemyState.Walking:
+//                    transform.Translate(Vector3.forward * Time.deltaTime * walkSpeed);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed);
+
+                    if (enemyProperty.isPlayAnim())
                     {
-                        enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Attack;
+                        RandomAction(); //随机切换指令
                     }
-                    else
-                    {
-                        enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Idle;
-                    }
-                }
-                else if (FloDistance < FloMoveingDistance)
-                {
-                    //追击主角
-                    enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Walking;
-                }
-                else
-                {
-                    //休闲
-                    enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Idle;
-                }
+
+                    _cc.SimpleMove(transform.forward * walkSpeed);
+                    //该状态下的检测指令
+                    WanderRadiusCheck();
+                    break;
+                //追击状态，朝着玩家跑去
+                case GlobalParametr.SimplyEnemyState.Run:
+
+//                    transform.Translate(Vector3.forward * Time.deltaTime * runSpeed);
+                    _cc.SimpleMove(transform.forward * runSpeed);
+                    //朝向玩家位置
+                    targetRotation =
+                        Quaternion.LookRotation(playerUnit.transform.position - transform.position, Vector3.up);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed);
+                    //该状态下的检测指令
+                    ChaseRadiusCheck();
+                    break;
+
+                //返回状态，超出追击范围后返回出生位置
+                case GlobalParametr.SimplyEnemyState.Return:
+
+                    //朝向初始位置移动
+                    targetRotation = Quaternion.LookRotation(initialPosition - transform.position, Vector3.up);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed);
+                    transform.Translate(Vector3.forward * Time.deltaTime * runSpeed);
+                    //该状态下的检测指令
+                    ReturnCheck();
+                    break;
+                case GlobalParametr.SimplyEnemyState.Attack:
+//                    transform.Translate(Vector3.forward * Time.deltaTime * runSpeed);
+                    //朝向玩家位置
+                    targetRotation =
+                        Quaternion.LookRotation(playerUnit.transform.position - transform.position, Vector3.up);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed);
+                    AttackCheck();
+                    break;
             }
-
-
-            //小于攻击距离
-            //小于警戒距离
-            //小于警戒距离
         }
     }
 
     /// <summary>
-    /// 移动协成
+    /// 游走状态检测，检测敌人距离及游走是否越界
     /// </summary>
-    /// <returns></returns>
-    IEnumerator MoveingProcess()
+    void WanderRadiusCheck()
     {
-        yield return new WaitForSeconds(1f);
-        while (true)
+        //玩家与怪物的距离
+        diatanceToPlayer = Vector3.Distance(playerUnit.transform.position, transform.position);
+        //怪物与出生点的距离
+        diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
+        //小于攻击距离,攻击玩家
+        if (diatanceToPlayer < attackRange)
         {
-            yield return new WaitForSeconds(0.1f);
-            if (enemyProperty.CurrentState != GlobalParametr.SimplyEnemyState.Death)
+            //进入战斗场景
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Attack;
+        }
+        //小于自卫距离,追击玩家
+        else if (diatanceToPlayer < defendRadius)
+        {
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Run;
+        }
+
+        //大于出生点位置
+        if (diatanceToInitial > wanderRadius)
+        {
+            //朝向调整为初始方向
+            targetRotation = Quaternion.LookRotation(initialPosition - transform.position, Vector3.up);
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Walking;
+        }
+    }
+
+    /// <summary>
+    /// 追击状态检测，检测敌人是否进入攻击范围以及是否离开警戒范围
+    /// </summary>
+    void ChaseRadiusCheck()
+    {
+        //玩家与怪物的距离
+        diatanceToPlayer = Vector3.Distance(playerUnit.transform.position, transform.position);
+        diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
+        //小于攻击距离攻击玩家
+        if (diatanceToPlayer < attackRange)
+        {
+            //进入战斗场景
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Attack;
+        }
+
+        //估计大于游走半径,返回出生点
+        if (diatanceToInitial > wanderRadius)
+        {
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Return;
+        }
+    }
+
+    /// <summary>
+    /// 超出追击半径，返回状态的检测，不再检测敌人距离
+    /// </summary>
+    void ReturnCheck()
+    {
+        //与出生点的距离
+        diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
+        diatanceToPlayer = Vector3.Distance(playerUnit.transform.position, transform.position);
+        //如果小于自卫半径
+        if (diatanceToInitial < defendRadius)
+        {
+            if (diatanceToPlayer < defendRadius)
             {
-                //移动
-                switch (enemyProperty.CurrentState)
-                {
-                    case GlobalParametr.SimplyEnemyState.Idle:
-                        break;
-                    case GlobalParametr.SimplyEnemyState.Walking:
-                        //面向主角
-                        transform.rotation = Quaternion.Lerp(transform.rotation,
-                            Quaternion.LookRotation(new Vector3(_GoHero.transform.position.x, 0,
-                                                        _GoHero.transform.position.z) -
-                                                    new Vector3(transform.position.x, 0, transform.position.z)), 0.3f);
-                        Vector3 v = Vector3.ClampMagnitude(_GoHero.transform.position - transform.position,
-                            FloMoveSpeed * Time.deltaTime);
-                        _cc.Move(v);
-                        break;
-                    case GlobalParametr.SimplyEnemyState.Attack:
-                        break;
-                    case GlobalParametr.SimplyEnemyState.Hurt:
-                        break;
-                    case GlobalParametr.SimplyEnemyState.Death:
-                        break;
-                }
+                enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Run;
             }
+        }
+
+        //如果已经接近初始位置，则随机一个待机状态.定义在巡逻半径的一半
+        if (diatanceToInitial < wanderRadius / 2)
+        {
+//            is_Running = false;
+            RandomAction();
+        }
+    }
+
+    /// <summary>
+    /// 攻击状态
+    /// </summary>
+    void AttackCheck()
+    {
+        //玩家与怪物的距离
+        diatanceToPlayer = Vector3.Distance(playerUnit.transform.position, transform.position);
+        diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
+        //大于攻击距离 游走状态
+        if (diatanceToPlayer > attackRange)
+        {
+            //游走状态
+            RandomAction();
+        }
+        else
+        {
+            //离得还不够近了
+            if (diatanceToPlayer >= 0.5f)
+            {
+                _cc.SimpleMove(transform.forward * runSpeed);
+            }
+
+            //大于切换时间
+            if (enemyProperty.isPlayAnim())
+            {
+                //攻击
+                enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Attack;
+                //更新行动时间
+                enemyProperty.LastActTime = 0;
+            }
+            else
+            {
+                //等待
+//                enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Idle;
+            }
+        }
+
+        //距离大于游走半径,返回出生点
+        if (diatanceToInitial > wanderRadius)
+        {
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Return;
         }
     }
 }
