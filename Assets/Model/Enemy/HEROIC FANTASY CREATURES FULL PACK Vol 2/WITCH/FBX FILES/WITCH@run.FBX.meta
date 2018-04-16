@@ -1,0 +1,257 @@
+fileFormatVersion: 2
+guid: 29032d08d16e8bb42a3c8436acccab52
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: WITCH_
+    100004: WITCH_ Head
+    100006: WITCH_ L Calf
+    100008: WITCH_ L Clavicle
+    100010: WITCH_ L Finger0
+    100012: WITCH_ L Finger01
+    100014: WITCH_ L Finger02
+    100016: WITCH_ L Finger1
+    100018: WITCH_ L Finger11
+    100020: WITCH_ L Finger12
+    100022: WITCH_ L Finger2
+    100024: WITCH_ L Finger21
+    100026: WITCH_ L Finger22
+    100028: WITCH_ L Finger3
+    100030: WITCH_ L Finger31
+    100032: WITCH_ L Finger32
+    100034: WITCH_ L Finger4
+    100036: WITCH_ L Finger41
+    100038: WITCH_ L Finger42
+    100040: WITCH_ L Foot
+    100042: WITCH_ L Forearm
+    100044: WITCH_ L Hand
+    100046: WITCH_ L Thigh
+    100048: WITCH_ L Toe0
+    100050: WITCH_ L UpperArm
+    100052: WITCH_ Neck
+    100054: WITCH_ Pelvis
+    100056: WITCH_ Queue de cheval 1
+    100058: WITCH_ R Calf
+    100060: WITCH_ R Clavicle
+    100062: WITCH_ R Finger0
+    100064: WITCH_ R Finger01
+    100066: WITCH_ R Finger02
+    100068: WITCH_ R Finger1
+    100070: WITCH_ R Finger11
+    100072: WITCH_ R Finger12
+    100074: WITCH_ R Finger2
+    100076: WITCH_ R Finger21
+    100078: WITCH_ R Finger22
+    100080: WITCH_ R Finger3
+    100082: WITCH_ R Finger31
+    100084: WITCH_ R Finger32
+    100086: WITCH_ R Finger4
+    100088: WITCH_ R Finger41
+    100090: WITCH_ R Finger42
+    100092: WITCH_ R Foot
+    100094: WITCH_ R Forearm
+    100096: WITCH_ R Hand
+    100098: WITCH_ R Thigh
+    100100: WITCH_ R Toe0
+    100102: WITCH_ R UpperArm
+    100104: WITCH_ Spine
+    100106: WITCH_ Spine1
+    100108: WITCH_BAG
+    100110: WITCH_POTION_A
+    100112: WITCH_POTION_B
+    100114: WITCH_SKULL
+    100116: WTCH_CLOAK_1
+    100118: WTCH_CLOAK_2
+    100120: WTCH_CLOAK_3
+    100122: WTCH_CLOAK_4
+    100124: WTCH_CLOAK_5
+    100126: WTCH_CLOAK_6
+    100128: WTCH_SKIRT_BACK_1
+    100130: WTCH_SKIRT_BACK_2
+    100132: WTCH_SKIRT_BACK_3
+    100134: WTCH_SKIRT_FRONT_1
+    100136: WTCH_SKIRT_FRONT_2
+    100138: WTCH_SKIRT_FRONT_3
+    400000: //RootNode
+    400002: WITCH_
+    400004: WITCH_ Head
+    400006: WITCH_ L Calf
+    400008: WITCH_ L Clavicle
+    400010: WITCH_ L Finger0
+    400012: WITCH_ L Finger01
+    400014: WITCH_ L Finger02
+    400016: WITCH_ L Finger1
+    400018: WITCH_ L Finger11
+    400020: WITCH_ L Finger12
+    400022: WITCH_ L Finger2
+    400024: WITCH_ L Finger21
+    400026: WITCH_ L Finger22
+    400028: WITCH_ L Finger3
+    400030: WITCH_ L Finger31
+    400032: WITCH_ L Finger32
+    400034: WITCH_ L Finger4
+    400036: WITCH_ L Finger41
+    400038: WITCH_ L Finger42
+    400040: WITCH_ L Foot
+    400042: WITCH_ L Forearm
+    400044: WITCH_ L Hand
+    400046: WITCH_ L Thigh
+    400048: WITCH_ L Toe0
+    400050: WITCH_ L UpperArm
+    400052: WITCH_ Neck
+    400054: WITCH_ Pelvis
+    400056: WITCH_ Queue de cheval 1
+    400058: WITCH_ R Calf
+    400060: WITCH_ R Clavicle
+    400062: WITCH_ R Finger0
+    400064: WITCH_ R Finger01
+    400066: WITCH_ R Finger02
+    400068: WITCH_ R Finger1
+    400070: WITCH_ R Finger11
+    400072: WITCH_ R Finger12
+    400074: WITCH_ R Finger2
+    400076: WITCH_ R Finger21
+    400078: WITCH_ R Finger22
+    400080: WITCH_ R Finger3
+    400082: WITCH_ R Finger31
+    400084: WITCH_ R Finger32
+    400086: WITCH_ R Finger4
+    400088: WITCH_ R Finger41
+    400090: WITCH_ R Finger42
+    400092: WITCH_ R Foot
+    400094: WITCH_ R Forearm
+    400096: WITCH_ R Hand
+    400098: WITCH_ R Thigh
+    400100: WITCH_ R Toe0
+    400102: WITCH_ R UpperArm
+    400104: WITCH_ Spine
+    400106: WITCH_ Spine1
+    400108: WITCH_BAG
+    400110: WITCH_POTION_A
+    400112: WITCH_POTION_B
+    400114: WITCH_SKULL
+    400116: WTCH_CLOAK_1
+    400118: WTCH_CLOAK_2
+    400120: WTCH_CLOAK_3
+    400122: WTCH_CLOAK_4
+    400124: WTCH_CLOAK_5
+    400126: WTCH_CLOAK_6
+    400128: WTCH_SKIRT_BACK_1
+    400130: WTCH_SKIRT_BACK_2
+    400132: WTCH_SKIRT_BACK_3
+    400134: WTCH_SKIRT_FRONT_1
+    400136: WTCH_SKIRT_FRONT_2
+    400138: WTCH_SKIRT_FRONT_3
+    7400000: run
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: run
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 11adb799863176b4eaf6b085eb3d8135,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
