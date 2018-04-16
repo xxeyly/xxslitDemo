@@ -77,8 +77,6 @@ public class Ctrl_Enemy_AI : MonoBehaviour
 
     IEnumerator EnemyAi()
     {
-        yield return new WaitForSeconds(enemyProperty.ActRestTme);
-
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
@@ -112,12 +110,15 @@ public class Ctrl_Enemy_AI : MonoBehaviour
                 //追击状态，朝着玩家跑去
                 case GlobalParametr.SimplyEnemyState.Run:
 
-//                    transform.Translate(Vector3.forward * Time.deltaTime * runSpeed);
-                    _cc.SimpleMove(transform.forward * runSpeed);
                     //朝向玩家位置
+//                    transform.LookAt(playerUnit.transform);
                     targetRotation =
                         Quaternion.LookRotation(playerUnit.transform.position - transform.position, Vector3.up);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1);
+                    transform.Translate(Vector3.forward * Time.deltaTime * runSpeed);
+//                    _cc.SimpleMove(transform.forward * runSpeed);
+//                    _cc.Move(transform.position * runSpeed);
+
                     //该状态下的检测指令
                     ChaseRadiusCheck();
                     break;
@@ -137,7 +138,8 @@ public class Ctrl_Enemy_AI : MonoBehaviour
                     //朝向玩家位置
                     targetRotation =
                         Quaternion.LookRotation(playerUnit.transform.position - transform.position, Vector3.up);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+//                    transform.LookAt(playerUnit.transform);
                     AttackCheck();
                     break;
             }
@@ -204,21 +206,35 @@ public class Ctrl_Enemy_AI : MonoBehaviour
         //与出生点的距离
         diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
         diatanceToPlayer = Vector3.Distance(playerUnit.transform.position, transform.position);
-        //如果小于自卫半径
+        /*    //如果小于自卫半径
+            if (diatanceToInitial < defendRadius)
+            {
+                if (diatanceToPlayer < defendRadius)
+                {
+                    enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Run;
+                }
+            }*/
+
+        /*if (diatanceToPlayer < defendRadius)
+        {
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Run;
+        }*/
+
         if (diatanceToInitial < defendRadius)
         {
             if (diatanceToPlayer < defendRadius)
             {
                 enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Run;
             }
-        }
-
-        //如果已经接近初始位置，则随机一个待机状态.定义在巡逻半径的一半
-        if (diatanceToInitial < wanderRadius / 2)
-        {
-//            is_Running = false;
             RandomAction();
         }
+
+        /* //如果已经接近初始位置，则随机一个待机状态.定义在巡逻半径的一半
+         if (diatanceToInitial < 0.5f)
+         {
+ //            is_Running = false;
+             RandomAction();
+         }*/
     }
 
     /// <summary>
@@ -229,33 +245,20 @@ public class Ctrl_Enemy_AI : MonoBehaviour
         //玩家与怪物的距离
         diatanceToPlayer = Vector3.Distance(playerUnit.transform.position, transform.position);
         diatanceToInitial = Vector3.Distance(transform.position, initialPosition);
-        //大于攻击距离 游走状态
-        if (diatanceToPlayer > attackRange)
-        {
-            //游走状态
-            RandomAction();
-        }
-        else
-        {
-            //离得还不够近了
-            if (diatanceToPlayer >= 0.5f)
-            {
-                _cc.SimpleMove(transform.forward * runSpeed);
-            }
 
-            //大于切换时间
-            if (enemyProperty.isPlayAnim())
-            {
-                //攻击
-                enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Attack;
-                //更新行动时间
-                enemyProperty.LastActTime = 0;
-            }
-            else
-            {
-                //等待
-//                enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Idle;
-            }
+        /*//离得还不够近了
+        if (diatanceToPlayer >= 0.5f)
+        {
+            _cc.SimpleMove(transform.forward * runSpeed);
+        }*/
+
+        //大于切换时间
+        if (enemyProperty.isPlayAnim())
+        {
+            //攻击
+            enemyProperty.CurrentState = GlobalParametr.SimplyEnemyState.Attack;
+            //更新行动时间
+            enemyProperty.LastActTime = 0;
         }
 
         //距离大于游走半径,返回出生点
