@@ -76,6 +76,8 @@ public class GlobalParametr : MonoBehaviour
         Attack,
         Hurt,
         Death,
+        Run,
+        Return
     }
 
     public enum ItemType
