@@ -10,12 +10,15 @@ public class FaceCamera : MonoBehaviour
 {
     void LateUpdate()
     {
-        transform.forward = Camera.main.transform.forward;
+        if (Vector3.Distance(transform.position, GameObject.FindWithTag("Player").transform.position) < 500)
+        {
+            transform.forward = Camera.main.transform.forward;
+        }
     }
 
     void Awake()
     {
-        enabled = false;
+//        enabled = false;
     }
 
     void OnBecameVisible()
@@ -25,6 +28,6 @@ public class FaceCamera : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        enabled = false;
+//        enabled = false;
     }
 }
