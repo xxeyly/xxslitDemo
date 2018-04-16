@@ -9,12 +9,27 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
     [SerializeField] private bool lockPoolSize; //是否锁定长度限制
     [SerializeField] [Range(1, 20)] private int additionPoolSize; //无可用空间时,增长的数值
     [SerializeField] private List<ObjPool> goList;
+    [SerializeField] private List<objectName> goNameList;
     private Dictionary<GameObject, List<GameObject>> idleDic = new Dictionary<GameObject, List<GameObject>>();
     private Dictionary<GameObject, List<GameObject>> usingDic = new Dictionary<GameObject, List<GameObject>>();
+
+    public GameObject GetObject(objPool objPool)
+    {
+        foreach (objectName objectName in goNameList)
+        {
+            if (objectName.ObjPool == objPool)
+            {
+                return objectName.obj;
+            }
+        }
+
+        return null;
+    }
+
     /// <summary>
     /// 初始化对象池
     /// </summary>
-    public void InitPool()
+    private void InitPool()
     {
         foreach (ObjPool objPool in goList)
         {
@@ -27,6 +42,7 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
                 {
                     Debug.Log("初始化失败");
                 }
+
                 item.transform.parent = this.transform;
                 item.gameObject.SetActive(false);
                 temIdle.Add(item);
@@ -41,7 +57,6 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
     {
         base.Awake();
         InitPool();
-
     }
 
 
@@ -64,6 +79,7 @@ public class ObjectPoolTool : Singleton<ObjectPoolTool>
             {
                 GameObject obj = temIdle[0];
                 obj.SetActive(true);
+                obj.transform.localScale = Vector3.one;
                 temIdle.Remove(obj);
                 temUsing.Add(obj);
                 return obj;
@@ -121,4 +137,18 @@ public class ObjPool
 {
     public GameObject obj; //对象池物体
     public int allocNum; //对象池大小
+}
+
+[Serializable]
+public class objectName
+{
+    public objPool ObjPool;
+    public GameObject obj; //对象池物体
+}
+
+public enum objPool
+{
+    ShopItem, //商店格子
+    ArchivingItem, //存档格子
+    HubText, //HUB上弹
 }
