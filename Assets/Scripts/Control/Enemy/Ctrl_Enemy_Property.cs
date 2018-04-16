@@ -19,7 +19,7 @@ public class Ctrl_Enemy_Property : MonoBehaviour
     private GlobalParametr.SimplyEnemyState _CurrentState = GlobalParametr.SimplyEnemyState.Idle; //当前动画状态
 
     public GlobalParametr.del_EnemyBloodGroove eveEnemyBloodGroove;
-    [SerializeField]private float actRestTme; //更换待机指令的间隔时间
+    [SerializeField] private float actRestTme; //更换待机指令的间隔时间
     private float lastActTime; //最近一次指令时间
 
     public bool isPlayAnim()
@@ -58,28 +58,16 @@ public class Ctrl_Enemy_Property : MonoBehaviour
 
     public float LastActTime
     {
-        get
-        {
-            return lastActTime;
-        }
+        get { return lastActTime; }
 
-        set
-        {
-            lastActTime = value;
-        }
+        set { lastActTime = value; }
     }
 
     public float ActRestTme
     {
-        get
-        {
-            return actRestTme;
-        }
+        get { return actRestTme; }
 
-        set
-        {
-            actRestTme = value;
-        }
+        set { actRestTme = value; }
     }
 
     void Start()
@@ -102,6 +90,8 @@ public class Ctrl_Enemy_Property : MonoBehaviour
             hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
             hub.GetComponent<Text>().text = "-" + 1;
             hub.GetComponent<View_HubText>().ShowHud();
+            iTween.MoveTo(gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1),
+                1);
         }
         else
         {
@@ -111,6 +101,9 @@ public class Ctrl_Enemy_Property : MonoBehaviour
             hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
             hub.GetComponent<Text>().text = "-" + (hurtNumber - intDefender);
             hub.GetComponent<View_HubText>().ShowHud();
+            iTween.MoveTo(gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1),
+                1);
+
             if (IntCurrentHealth <= 0)
             {
                 //死亡取消碰撞器
