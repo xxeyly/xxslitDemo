@@ -13,16 +13,19 @@ public class Ctrl_Enemy_Property : MonoBehaviour
     [SerializeField] private int intCurrentHealth;
     [SerializeField] public int intDefender = 20;
     [SerializeField] public int intAttack = 20;
-    [SerializeField] private GameObject hudText;
     [SerializeField] private Vector3 offset;
-
-    public float AttackCD = 2;
-    public float AttackTimer = 0;
 
     [SerializeField]
     private GlobalParametr.SimplyEnemyState _CurrentState = GlobalParametr.SimplyEnemyState.Idle; //当前动画状态
 
     public GlobalParametr.del_EnemyBloodGroove eveEnemyBloodGroove;
+    [SerializeField]private float actRestTme; //更换待机指令的间隔时间
+    private float lastActTime; //最近一次指令时间
+
+    public bool isPlayAnim()
+    {
+        return LastActTime > ActRestTme;
+    }
 
     /// <summary>
     /// 当前的状态
@@ -32,6 +35,11 @@ public class Ctrl_Enemy_Property : MonoBehaviour
         get { return _CurrentState; }
 
         set { _CurrentState = value; }
+    }
+
+    private void Update()
+    {
+        LastActTime += Time.deltaTime;
     }
 
     /// <summary>
@@ -48,14 +56,35 @@ public class Ctrl_Enemy_Property : MonoBehaviour
         }
     }
 
+    public float LastActTime
+    {
+        get
+        {
+            return lastActTime;
+        }
+
+        set
+        {
+            lastActTime = value;
+        }
+    }
+
+    public float ActRestTme
+    {
+        get
+        {
+            return actRestTme;
+        }
+
+        set
+        {
+            actRestTme = value;
+        }
+    }
+
     void Start()
     {
         IntCurrentHealth = intMaxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     /// <summary>
@@ -68,8 +97,7 @@ public class Ctrl_Enemy_Property : MonoBehaviour
         if (hurtNumber <= intDefender)
         {
             IntCurrentHealth -= 1;
-            GameObject hub = ObjectPoolTool.Instance.Pop(hudText);
-            hub.SetActive(true);
+            GameObject hub = ObjectPoolTool.Instance.Pop(ObjectPoolTool.Instance.GetObject(objPool.HubText));
             hub.transform.parent = Ctrl_TootipManager.Instance.UICanvas;
             hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
             hub.GetComponent<Text>().text = "-" + 1;
@@ -77,10 +105,8 @@ public class Ctrl_Enemy_Property : MonoBehaviour
         }
         else
         {
-
             IntCurrentHealth -= (hurtNumber - intDefender);
-            GameObject hub = ObjectPoolTool.Instance.Pop(hudText);
-            hub.SetActive(true);
+            GameObject hub = ObjectPoolTool.Instance.Pop(ObjectPoolTool.Instance.GetObject(objPool.HubText));
             hub.transform.parent = Ctrl_TootipManager.Instance.UICanvas;
             hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
             hub.GetComponent<Text>().text = "-" + (hurtNumber - intDefender);
@@ -104,8 +130,8 @@ public class Ctrl_Enemy_Property : MonoBehaviour
                     }
                 }
 
-                //增加杀敌数量
-                Ctrl_HeroProperty.Instance.AddKillnumber();
+                #region 任务处理
+
                 //当前接受的任务中,击杀怪物中包含本身,并且当前任务不是提交状态,增加击杀个数
                 foreach (Model_Quest quest in Ctrl_PlayerQuest.Instance.PlayQuestList)
                 {
@@ -128,6 +154,10 @@ public class Ctrl_Enemy_Property : MonoBehaviour
                     }
                 }
 
+                #endregion
+
+                //增加杀敌数量
+                Ctrl_HeroProperty.Instance.AddKillnumber();
                 StartCoroutine(WaitTimeDestroy());
             }
         }
