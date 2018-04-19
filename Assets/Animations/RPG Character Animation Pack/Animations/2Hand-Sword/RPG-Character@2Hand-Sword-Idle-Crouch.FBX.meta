@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 0b57817742a7a134a8e4ff2c3594632d
-timeCreated: 1488200712
+guid: cf2152840412fa244b59a78e7704502b
+timeCreated: 1460366254
 licenseType: Store
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     100002: B_Prop1
@@ -109,9 +109,7 @@ ModelImporter:
     100202: B_Spine2
     100204: Motion
     100206: RPG-Character-Mesh
-    100208: Crossbow
-    100210: 2Hand-Sword
-    100212: Exporter
+    100208: Exporter
     400000: //RootNode
     400002: B_Prop1
     400004: B_L_Hand
@@ -216,23 +214,17 @@ ModelImporter:
     400202: B_Spine2
     400204: Motion
     400206: RPG-Character-Mesh
-    400208: Crossbow
-    400210: 2Hand-Sword
-    400212: Exporter
+    400208: Exporter
     2300000: Mesh_Soldier_A
     2300002: AK47
     2300004: Chaingun
     2300006: MissileLauncher
     2300008: USP
-    2300010: Crossbow
-    2300012: 2Hand-Sword
     3300000: Mesh_Soldier_A
     3300002: AK47
     3300004: Chaingun
     3300006: MissileLauncher
     3300008: USP
-    3300010: Crossbow
-    3300012: 2Hand-Sword
     4300000: Mesh_Soldier_A
     4300002: AK47
     4300004: MissileLauncher
@@ -240,25 +232,21 @@ ModelImporter:
     4300008: Chaingun
     4300010: Soldier_Mesh
     4300012: RPG-Character-Mesh
-    4300014: Crossbow
-    4300016: 2Hand-Sword
-    7400000: 2Hand-Sword-Strafe-Backward-Right
+    7400000: 2Hand-Sword-Idle-Crouch
     9500000: //RootNode
     11100000: //RootNode
     13700000: Soldier_Mesh
     13700002: RPG-Character-Mesh
-  externalObjects: {}
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: Motion
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -269,20 +257,18 @@ ModelImporter:
       animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: 2Hand-Sword-Strafe-Backward-Right
+      name: 2Hand-Sword-Idle-Crouch
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -293,7 +279,7 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
@@ -422,18 +408,13 @@ ModelImporter:
     globalScale: 0.01
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -443,7 +424,6 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 2
     tangentImportMode: 2
-    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 1
   humanDescription:
