@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 41b0e4c3114d14c4b860b4f29d0c79a6
+timeCreated: 1524129715
+licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -159,7 +161,10 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'WITCH_ L
+      Thigh' : position error = 15.319607 mm\n\t'WITCH_ R Thigh' : position error
+      = 15.319602 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -216,7 +221,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
-    hasTranslationDoF: 0
+    hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 11adb799863176b4eaf6b085eb3d8135,
