@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Scenes/TestAnimator.unity
+Assets/Scenes/TestAnimator.unity.meta
+Assets/Scripts/Test/MonsterWander.cs
+Assets/Scripts/Test/MonsterWander.cs.meta

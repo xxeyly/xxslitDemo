@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,25 +22,18 @@ public class Ctrl_PlayerMoveing : MonoBehaviour
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-            if (vertical == 0 && horizontal != 0)
-            {
-                Ctrl_PlayerAminator.Instance.LeftAndRight(true);
-            }
-            else
-            {
-                Ctrl_PlayerAminator.Instance.LeftAndRight(false);
-            }
-
             Ctrl_PlayerAminator.Instance.SetHVValue(horizontal, vertical);
             moveDirection = new Vector3(horizontal, 0, vertical);
             moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= 6+(Ctrl_HeroProperty.Instance.GetCurrentDEX()*0.01f);
+            moveDirection *= 6 + (Ctrl_HeroProperty.Instance.GetCurrentDEX() * 0.01f);
+            transform.Rotate(0, Input.GetAxis("Horizontal") * 1, 0);
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
-        if (!Ctrl_PlayerAminator.Instance.GetCurrentBlockState())
+        //如果垂直轴无变化,不走
+        if (Math.Abs(Input.GetAxis("Vertical")) > 0.01f)
         {
             controller.Move(moveDirection * Time.deltaTime);
         }
