@@ -6,6 +6,7 @@ using UnityEngine;
 public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
 {
     [SerializeField] private TextAsset itemJson;
+
     /// <summary>
     ///  物品信息的列表（集合）
     /// </summary>
@@ -158,6 +159,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
         itemList = JsonMapper.ToObject<List<Model_Item>>(itemJson.text);
     }
 
+
     /// <summary>
     /// 根据Id获得指定的物品
     /// </summary>
@@ -175,6 +177,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
 
         return null;
     }
+
     /// <summary>
     /// 获得一个全新的Item地址
     /// </summary>
@@ -188,7 +191,7 @@ public class Ctrl_InventoryManager : Singleton<Ctrl_InventoryManager>
             item.sellPriceByGold, item.sellPriceByDiamond, item.minLevel, item.sellable, item.tradable,
             item.destroyable, item.description, item.sprite, item.useDestroy, item.useHealth, item.useMagic,
             item.useExperience, item.equipHealthBonus, item.equipManaBonus, item.equipDamageBonus,
-            item.equipDefenseBonus, item.equipSpeedcBonus, item.modelPrefab, item.drawing,item.drawingItemId,item.makeTime);
+            item.equipDefenseBonus, item.equipSpeedcBonus, item.modelPrefab, item.drawing, item.drawingItemId,
+            item.makeTime);
     }
-
 }
