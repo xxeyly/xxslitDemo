@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
 {
@@ -11,8 +12,10 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     [SerializeField] private GameObject MakeTootip; //谈话弹窗
     [SerializeField] private GameObject AgreeCancelTootip; //保留还是丢弃弹窗
     [SerializeField] private GameObject PlayerReadingTootip; //保留还是丢弃弹窗
-    public GameObject PickUpItem;
-    public bool IsPickedItem { get; set; }
+    [SerializeField] private GameObject SkillTootip; //技能弹窗
+    public GameObject PickUp;
+    public bool IsPicked { get; set; }
+    public bool IsSkillItem { get; set; }
 
     public GameObject AgreeCancel
     {
@@ -20,13 +23,12 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     }
 
     [SerializeField] private Canvas canvas;
+
     public Transform UICanvas
     {
-        get
-        {
-            return canvas.transform;
-        }
+        get { return canvas.transform; }
     }
+
     //Tootip偏移
     [SerializeField] private Vector2 toolTipPosionOffset;
     [SerializeField] public GameObject itemTootip;
@@ -114,13 +116,13 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
 
     private void Update()
     {
-        if (IsPickedItem)
+        if (IsPicked)
         {
             //如果我们捡起了物品，我们就要让物品跟随鼠标
             Vector2 position;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
                 Input.mousePosition, null, out position);
-            PickUpItem.GetComponent<Ctrl_PickUp>().SetLocalPosition(position + toolTipPosionOffset);
+            PickUp.GetComponent<Ctrl_PickUp>().SetLocalPosition(position + toolTipPosionOffset);
         }
 
         if (isToolTipShow)
@@ -134,6 +136,14 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
         else
         {
             itemTootip.GetComponent<Ctrl_ItemTootip>().HideItemTootip();
+        }
+
+        if (IsSkillItem)
+        {
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform,
+                Input.mousePosition, canvas.worldCamera, out position);
+            SkillTootip.transform.localPosition = position + toolTipPosionOffset;
         }
     }
 
@@ -214,5 +224,53 @@ public class Ctrl_TootipManager : Singleton<Ctrl_TootipManager>
     public void HidePlayerReadingTootip()
     {
         PlayerReadingTootip.SetActive(false);
+    }
+
+    /// <summary>
+    /// 显示技能信息界面
+    /// </summary>
+    /// <param name="skill"></param>
+    public void ShowSkillTootip(string skill)
+    {
+        IsSkillItem = true;
+        SkillTootip.SetActive(true);
+        SkillTootip.GetComponentInChildren<Text>().text = skill;
+    }
+
+    /// <summary>
+    /// 隐藏信息界面
+    /// </summary>
+    public void HideSkillTootip()
+    {
+        IsSkillItem = false;
+        SkillTootip.SetActive(false);
+    }
+
+    /// <summary>
+    /// 显示物品
+    /// </summary>
+    /// <param name="item"></param>
+    public void ShowPickUp(Model_Item item)
+    {
+        PickUp.GetComponent<Ctrl_PickUp>().Item = item;
+        IsPicked = true;
+    }
+
+    /// <summary>
+    /// 显示技能
+    /// </summary>
+    /// <param name="skill"></param>
+    public void ShowPickUp(Model_Skill skill)
+    {
+        PickUp.GetComponent<Ctrl_PickUp>().Skill = skill;
+        IsPicked = true;
+    }
+
+    /// <summary>
+    /// 隐藏物品/技能
+    /// </summary>
+    public void HidePickUp()
+    {
+        IsPicked = false;
     }
 }

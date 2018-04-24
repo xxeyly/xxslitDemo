@@ -55,7 +55,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _ImgHoverOverlay = transform.Find("Hover Overlay").GetComponent<Image>();
         _ImgIcon = transform.Find("Icon").GetComponent<Image>();
         _Amount = transform.Find("Amount").GetComponent<Text>();
-        pickupItemSlot = Ctrl_TootipManager.Instance.PickUpItem.GetComponent<Ctrl_PickUp>();
+        pickupItemSlot = Ctrl_TootipManager.Instance.PickUp.GetComponent<Ctrl_PickUp>();
     }
 
 
@@ -93,7 +93,7 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 if ((View_PlayerinfoPespons.Instance.PackageActivityState ||
                      View_PlayerinfoPespons.Instance.PackageAnvilState) && slot.Item != null)
                 {
-                    Ctrl_TootipManager.Instance.IsPickedItem = true;
+                    Ctrl_TootipManager.Instance.IsPicked = true;
                     pickupItemSlot.Item = slot.Item;
                     slot.Item = null;
                 }
@@ -103,77 +103,80 @@ public class View_Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (eventData.button == PointerEventData.InputButton.Left)
             {
                 //当前手上存在物品
-                if (Ctrl_TootipManager.Instance.IsPickedItem)
+                if (Ctrl_TootipManager.Instance.IsPicked)
                 {
-                    //当前格子内没有物品
-                    if (slot.Item == null)
+                    if (Ctrl_TootipManager.Instance.PickUp.GetComponent<Ctrl_PickUp>().Skill == null)
                     {
-                        //按住Ctrl放下一个物品
-                        if (Input.GetKey(KeyCode.LeftControl))
+                        //当前格子内没有物品
+                        if (slot.Item == null)
                         {
-                            slot.Item = Ctrl_InventoryManager.Instance.NewItem(pickupItemSlot.Item.id);
-                            pickupItemSlot.Item.currentNumber -= 1;
-                            if (pickupItemSlot.Item.currentNumber == 0)
-                            {
-                                pickupItemSlot.Item = null;
-                                Ctrl_TootipManager.Instance.IsPickedItem = false;
-                            }
-                        }
-                        else
-                        {
-                            slot.Item = pickupItemSlot.Item;
-                            pickupItemSlot.Item = null;
-                            Ctrl_TootipManager.Instance.IsPickedItem = false;
-                        }
-                    }
-                    //格子内存在物品
-                    else
-                    {
-                        //如果是相同的物品,叠加 不是相同物品替换
-                        if (pickupItemSlot.Item.id == slot.Item.id)
-                        {
+                            //按住Ctrl放下一个物品
                             if (Input.GetKey(KeyCode.LeftControl))
                             {
-                                if (slot.Item.currentNumber != slot.Item.maxStack)
+                                slot.Item = Ctrl_InventoryManager.Instance.NewItem(pickupItemSlot.Item.id);
+                                pickupItemSlot.Item.currentNumber -= 1;
+                                if (pickupItemSlot.Item.currentNumber == 0)
                                 {
-                                    slot.Item.currentNumber += 1;
-                                    slot.UpdateAmount();
-                                    pickupItemSlot.Item.currentNumber -= 1;
-                                    if (pickupItemSlot.Item.currentNumber == 0)
+                                    pickupItemSlot.Item = null;
+                                    Ctrl_TootipManager.Instance.IsPicked = false;
+                                }
+                            }
+                            else
+                            {
+                                slot.Item = pickupItemSlot.Item;
+                                pickupItemSlot.Item = null;
+                                Ctrl_TootipManager.Instance.IsPicked = false;
+                            }
+                        }
+                        //格子内存在物品
+                        else
+                        {
+                            //如果是相同的物品,叠加 不是相同物品替换
+                            if (pickupItemSlot.Item.id == slot.Item.id)
+                            {
+                                if (Input.GetKey(KeyCode.LeftControl))
+                                {
+                                    if (slot.Item.currentNumber != slot.Item.maxStack)
                                     {
+                                        slot.Item.currentNumber += 1;
+                                        slot.UpdateAmount();
+                                        pickupItemSlot.Item.currentNumber -= 1;
+                                        if (pickupItemSlot.Item.currentNumber == 0)
+                                        {
+                                            pickupItemSlot.Item = null;
+                                            Ctrl_TootipManager.Instance.IsPicked = false;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    //相同物品下 当前手上的物品个数小于格子物品剩余到达上限的个数,手上物品的个数添加到格子中
+                                    //大于的情况下 添加到格子上限 手上保存剩下的物品
+                                    if (pickupItemSlot.Item.currentNumber <= (slot.Item.maxStack - slot.Item.currentNumber))
+                                    {
+                                        slot.Item.currentNumber += pickupItemSlot.Item.currentNumber;
+                                        slot.UpdateAmount();
                                         pickupItemSlot.Item = null;
-                                        Ctrl_TootipManager.Instance.IsPickedItem = false;
+                                        Ctrl_TootipManager.Instance.IsPicked = false;
+                                    }
+                                    else
+                                    {
+                                        //更新手上物品数量
+                                        pickupItemSlot.Item.currentNumber -= (slot.Item.maxStack - slot.Item.currentNumber);
+                                        //更新格子物品数量及UI
+                                        slot.Item.currentNumber = slot.Item.maxStack;
+                                        slot.UpdateAmount();
                                     }
                                 }
                             }
                             else
                             {
-                                //相同物品下 当前手上的物品个数小于格子物品剩余到达上限的个数,手上物品的个数添加到格子中
-                                //大于的情况下 添加到格子上限 手上保存剩下的物品
-                                if (pickupItemSlot.Item.currentNumber <= (slot.Item.maxStack - slot.Item.currentNumber))
-                                {
-                                    slot.Item.currentNumber += pickupItemSlot.Item.currentNumber;
-                                    slot.UpdateAmount();
-                                    pickupItemSlot.Item = null;
-                                    Ctrl_TootipManager.Instance.IsPickedItem = false;
-                                }
-                                else
-                                {
-                                    //更新手上物品数量
-                                    pickupItemSlot.Item.currentNumber -= (slot.Item.maxStack - slot.Item.currentNumber);
-                                    //更新格子物品数量及UI
-                                    slot.Item.currentNumber = slot.Item.maxStack;
-                                    slot.UpdateAmount();
-                                }
+                                //交换Item
+                                Model_Item tempItem;
+                                tempItem = slot.Item;
+                                slot.Item = pickupItemSlot.Item;
+                                pickupItemSlot.gameObject.GetComponent<Ctrl_PickUp>().Item = tempItem;
                             }
-                        }
-                        else
-                        {
-                            //交换Item
-                            Model_Item tempItem;
-                            tempItem = slot.Item;
-                            slot.Item = pickupItemSlot.Item;
-                            pickupItemSlot.gameObject.GetComponent<Ctrl_PickUp>().Item = tempItem;
                         }
                     }
                 }

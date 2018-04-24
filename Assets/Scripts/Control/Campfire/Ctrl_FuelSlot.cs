@@ -33,11 +33,11 @@ public class Ctrl_FuelSlot : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         //手上的物品
-        Ctrl_PickUp pickUp = Ctrl_TootipManager.Instance.PickUpItem.GetComponent<Ctrl_PickUp>();
+        Ctrl_PickUp pickUp = Ctrl_TootipManager.Instance.PickUp.GetComponent<Ctrl_PickUp>();
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             //如果手上有物品
-            if (pickUp.Item != null)
+            if (pickUp.IsEmpty())
             {
                 //如果当前格子没有物品
                 if (Item == null)
