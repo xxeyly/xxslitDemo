@@ -1,0 +1,145 @@
+[
+	{
+		"skillId": 0,
+		"skillName": "普通攻击",
+		"skillLockLv": 0,
+		"skillCurrentLv": 1,
+		"skillMaxLv": 5,
+		"skillConsumption": 10,
+		"skillCD": 0,
+		"skillType": 0,
+		"skillBuff": 0,
+		"casterType": 0,
+		"casterBullet": "",
+		"skillSprite": "Sprites/Skill/skill_1000",
+		"skillRange": 2,
+		"skillIncludedAngle": 10,
+		"skillDescription": "普普通通的攻击",
+		"skillDmage": [
+			[ 10, 20 ],
+			[ 20, 40 ],
+			[ 40, 50 ],
+			[ 50, 60 ],
+			[ 60, 70 ]
+		],
+		"skillProficiency": [ 1, 2, 3, 4, 5 ],
+		"skillStrikeDistance": 1
+
+	},
+	{
+		"skillId": 1,
+		"skillName": "大转盘",
+		"skillLockLv": 0,
+		"skillCurrentLv": 1,
+		"skillMaxLv": 5,
+		"skillConsumption": 100,
+		"skillCD": 5,
+		"skillType": 0,
+		"skillBuff": 0,
+		"casterType": 0,
+		"casterBullet": "",
+		"skillSprite": "Sprites/Skill/skill_90003",
+		"skillRange": 3,
+		"skillIncludedAngle": 10,
+		"skillDescription": "快速旋转,对敌人造成大量伤害",
+		"skillDmage": [
+			[ 10, 20, 20, 20, 20, 20, 20, 20, 20, 40, 40, 50 ],
+			[ 20, 40, 40, 40, 40, 40, 40, 40, 40, 40, 100 ]
+		],
+		"skillProficiency": [ 10,20,30,40,50 ],
+		"skillStrikeDistance": 1
+
+
+	},
+	{
+		"skillId": 2,
+		"skillName": "重击",
+		"skillLockLv": 5,
+		"skillCurrentLv": 1,
+		"skillMaxLv": 5,
+		"skillConsumption": 100,
+		"skillCD": 10,
+		"skillType": 0,
+		"skillBuff": 0,
+		"casterType": 0,
+		"casterBullet": "",
+		"skillSprite": "Sprites/Skill/skill_1010",
+		"skillRange": 3,
+		"skillIncludedAngle": 10,
+		"skillDescription": "快速旋转,对敌人造成大量伤害",
+		"skillDmage": [
+			[ 100 ],
+			[ 200 ]
+		],
+		"skillProficiency": [ 10, 20, 30 ]
+	},
+	{
+		"skillId": 3,
+		"skillName": "重击",
+		"skillLockLv": 10,
+		"skillCurrentLv": 1,
+		"skillMaxLv": 5,
+		"skillConsumption": 100,
+		"skillCD": 3,
+		"skillType": 0,
+		"skillBuff": 0,
+		"casterType": 0,
+		"casterBullet": "",
+		"skillSprite": "Sprites/Skill/skill_1010",
+		"skillRange": 3,
+		"skillIncludedAngle": 10,
+		"skillDescription": "快速旋转,对敌人造成大量伤害",
+		"skillDmage": [
+			[ 100 ],
+			[ 200 ]
+		],
+		"skillProficiency": [ 10, 20, 30 ]
+
+	},
+	{
+		"skillId": 4,
+		"skillName": "重击",
+		"skillLockLv": 10,
+		"skillCurrentLv": 1,
+		"skillMaxLv": 5,
+		"skillConsumption": 100,
+		"skillCD": 3,
+		"skillType": 0,
+		"skillBuff": 0,
+		"casterType": 0,
+		"casterBullet": "",
+		"skillSprite": "Sprites/Skill/skill_1010",
+		"skillRange": 3,
+		"skillIncludedAngle": 10,
+		"skillDescription": "快速旋转,对敌人造成大量伤害",
+		"skillDmage": [
+			[ 100 ],
+			[ 200 ]
+		],
+		"skillProficiency": [ 10, 20, 30 ]
+
+	},
+	{
+		"skillId": 5,
+		"skillName": "重击",
+		"skillLockLv": 10,
+		"skillCurrentLv": 1,
+		"skillMaxLv": 5,
+		"skillConsumption": 100,
+		"skillCD": 3,
+		"skillType": 0,
+		"skillBuff": 0,
+		"casterType": 0,
+		"casterBullet": "",
+		"skillSprite": "Sprites/Skill/skill_1010",
+		"skillRange": 3,
+		"skillIncludedAngle": 10,
+		"skillDescription": "快速旋转,对敌人造成大量伤害",
+		"skillDmage": [
+			[ 100 ],
+			[ 200 ]
+		],
+		"skillProficiency": [ 10, 20, 30 ]
+
+	}
+]
