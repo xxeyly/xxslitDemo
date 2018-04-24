@@ -151,4 +151,5 @@ public enum objPool
     ShopItem, //商店格子
     ArchivingItem, //存档格子
     HubText, //HUB上弹
+    SkillItem //技能格子
 }

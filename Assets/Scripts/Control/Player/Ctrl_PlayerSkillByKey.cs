@@ -4,67 +4,60 @@ using UnityEngine;
 
 public class Ctrl_PlayerSkillByKey : MonoBehaviour
 {
-    //事件:主角控制事件
-    public static event GlobalParametr.del_PlayerControlWithStr evePlayerControl;
-
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            evePlayerControl("NormalAttack");
+            ReleaseSkill(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            evePlayerControl("MagicTrickA");
+            ReleaseSkill(2);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            evePlayerControl("MagicTrickB");
-
+            ReleaseSkill(3);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            evePlayerControl("MagicTrickC");
-
+            ReleaseSkill(4);
         }
 
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (!Ctrl_PlayerAminator.Instance.GetCurrentBlockBreakState())
-            {
-                Ctrl_PlayerAminator.Instance.Block(true);
-            }
-        }
-        else
-        {
-            Ctrl_PlayerAminator.Instance.Block(false);
+            ReleaseSkill(5);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            Ctrl_PlayerAminator.Instance.BlockBreak(true);
-        }
-        else
-        {
-            Ctrl_PlayerAminator.Instance.BlockBreak(false);
+            ReleaseSkill(6);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            Ctrl_PlayerAminator.Instance.KickL();
+            ReleaseSkill(7);
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            Ctrl_PlayerAminator.Instance.KickR();
+            ReleaseSkill(8);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            ReleaseSkill(9);
+        }
+    }
+
+    public void ReleaseSkill(int key)
+    {
+        Ctrl_ActionBarSlot actionBarSlot = Ctrl_SkillManager.Instance.GetCurrentActionBarSlot(key-1);
+        if (actionBarSlot != null)
+        {
+            actionBarSlot.UseSkill();
         }
     }
 }

@@ -24,17 +24,7 @@ public class GlobalParametr : MonoBehaviour
 
     #region 动画
 
-    public const string UnarmedWalk = "IsUnarmed-Walk";
-    public const string UnarmedNormalAttack = "UnarmedNormalAttack";
-    public const string UnarmedSkill1 = "UnarmedSkill1";
-    public const string UnarmedSkill2 = "UnarmedSkill2";
-    public const string UnarmedSkill3 = "UnarmedSkill3";
-
     #endregion
-
-    #region Tag
-
-    public const string TAG_ENEMY = "Enemy";
 
     #region 枚举
 
@@ -106,7 +96,19 @@ public class GlobalParametr : MonoBehaviour
         Shield
     }
 
+    public enum SkillEnum
+    {
+        NormalAttack = 0,
+        Skill1,
+        Skill2,
+        Skill3,
+    }
+
     #endregion
+
+    #region Tag
+
+    public const string TAG_ENEMY = "Enemy";
 
     #endregion
 
@@ -145,10 +147,12 @@ public class GlobalParametr : MonoBehaviour
     public delegate void del_ShopSlot(Model_Item item);
 
     public delegate void del_EnemyBloodGroove(float value);
+
     /// <summary>
     /// 物品/存档等敏感操作,询问是否保留时的委托
     /// </summary>
     public delegate void del_AgreeCancel();
+
     public class KeyValuesUpdate
     {
         private string _Key;
@@ -207,6 +211,7 @@ public class GlobalParametr : MonoBehaviour
         npcDictionary.TryGetValue(id, out npcName);
         return npcName;
     }
+
     /// <summary>
     /// 根据ID获得熟品名称
     /// </summary>
