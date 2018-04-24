@@ -11,38 +11,38 @@ public class Control_HeroAttackInputByKey : Singleton<Control_HeroAttackInputByK
     public static event GlobalParametr.del_PlayerControlWithStr evePlayerControl;
 
     // Update is called once per frame
-    public View_ATKBtnCDEffect[] cdgame;
+    public View_ActionBarSlot[] cdgame;
 
     public void NormalAttack()
     {
-        if (evePlayerControl != null && cdgame[0].isSkillRead)
+    /*    if (evePlayerControl)
         {
             evePlayerControl("NormalAttack");
-        }
+        }*/
     }
 
     public void MagicTrickA()
     {
-        if (evePlayerControl != null && cdgame[1].isSkillRead)
+        /*if (evePlayerControl != null && cdgame[1].isSkillRead)
         {
             evePlayerControl("MagicTrickA");
-        }
+        }*/
     }
 
     public void MagicTrickB()
     {
-        if (evePlayerControl != null && cdgame[2].isSkillRead)
+        /*if (evePlayerControl != null && cdgame[2].isSkillRead)
         {
             evePlayerControl("MagicTrickB");
-        }
+        }*/
     }
 
     public void MagicTrickC()
     {
-        if (evePlayerControl != null && cdgame[3].isSkillRead)
+        /*if (evePlayerControl != null && cdgame[3].isSkillRead)
         {
             evePlayerControl("MagicTrickC");
-        }
+        }*/
     }
 
     void Update()
@@ -51,28 +51,28 @@ public class Control_HeroAttackInputByKey : Singleton<Control_HeroAttackInputByK
         {
             NormalAttack();
 
-            cdgame[0].ResponseBtnClick();
+//            cdgame[0].ResponseBtnClick();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             MagicTrickA();
 
-            cdgame[1].ResponseBtnClick();
+//            cdgame[1].ResponseBtnClick();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             MagicTrickB();
 
-            cdgame[2].ResponseBtnClick();
+//            cdgame[2].ResponseBtnClick();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             MagicTrickC();
 
-            cdgame[3].ResponseBtnClick();
+//            cdgame[3].ResponseBtnClick();
         }
     }
 }
