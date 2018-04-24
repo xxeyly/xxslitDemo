@@ -9,10 +9,17 @@ using UnityEngine.UI;
 public class Ctrl_Enemy_Property : MonoBehaviour
 {
     [SerializeField] private int enemyId;
-    [SerializeField] private int intMaxHealth = 1000;
-    [SerializeField] private int intCurrentHealth;
-    [SerializeField] public int intDefender = 20;
-    [SerializeField] public int intAttack = 20;
+    [SerializeField] private int intMaxHealth = 1000; //最大生命上限
+    [SerializeField] private int intCurrentHealth; //当前生命值
+    [SerializeField] public int intDefender = 20; //防御
+    [SerializeField] public int intAttack = 20; //攻击
+    [SerializeField] private int physicalResistance; //物理抗性
+    [SerializeField] private int jinResistance; //金抗性
+    [SerializeField] private int muResistance; //木抗性
+    [SerializeField] private int waterResistance; //水抗性
+    [SerializeField] private int fireResistance; //火抗性
+    [SerializeField] private int soilResistance; //土抗性
+    [SerializeField] private int MagicalBenefitsResistance; //魔法减益抗性
     [SerializeField] private Vector3 offset;
 
     [SerializeField]
@@ -79,30 +86,27 @@ public class Ctrl_Enemy_Property : MonoBehaviour
     /// 怪物收到伤害
     /// </summary>
     /// <param name="hurtNumber"></param>
-    public void OnHurt(int hurtNumber)
+    public void OnHurt(int hurtNumber, float moveDirection)
     {
         _CurrentState = GlobalParametr.SimplyEnemyState.Hurt;
         if (hurtNumber <= intDefender)
         {
             IntCurrentHealth -= 1;
-            GameObject hub = ObjectPoolTool.Instance.Pop(ObjectPoolTool.Instance.GetObject(objPool.HubText));
-            hub.transform.parent = Ctrl_TootipManager.Instance.UICanvas;
-            hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
-            hub.GetComponent<Text>().text = "-" + 1;
-            hub.GetComponent<View_HubText>().ShowHud();
-            iTween.MoveTo(gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1),
-                1);
+            //位移更新,增加技能击退效果,会根据技能的属性,来位置距离
+            iTween.MoveBy(gameObject,
+                transform.InverseTransformDirection(GameObject.FindGameObjectWithTag("Player").transform.forward +
+                                                    GameObject.FindGameObjectWithTag("Player").transform.forward *
+                                                    moveDirection), 1f);
+            Hud(1);
         }
         else
         {
             IntCurrentHealth -= (hurtNumber - intDefender);
-            GameObject hub = ObjectPoolTool.Instance.Pop(ObjectPoolTool.Instance.GetObject(objPool.HubText));
-            hub.transform.parent = Ctrl_TootipManager.Instance.UICanvas;
-            hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
-            hub.GetComponent<Text>().text = "-" + (hurtNumber - intDefender);
-            hub.GetComponent<View_HubText>().ShowHud();
-            iTween.MoveTo(gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z - 1),
-                1);
+            iTween.MoveBy(gameObject,
+                transform.InverseTransformDirection(GameObject.FindGameObjectWithTag("Player").transform.forward +
+                                                    GameObject.FindGameObjectWithTag("Player").transform.forward *
+                                                    moveDirection), 1f);
+            Hud(hurtNumber - intDefender);
 
             if (IntCurrentHealth <= 0)
             {
@@ -160,5 +164,17 @@ public class Ctrl_Enemy_Property : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
+    }
+    /// <summary>
+    /// 伤害HUD处理 就是飘血
+    /// </summary>
+    /// <param name="hurtNumber"></param>
+    public void Hud(int hurtNumber)
+    {
+        GameObject hub = ObjectPoolTool.Instance.Pop(ObjectPoolTool.Instance.GetObject(objPool.HubText));
+        hub.transform.parent = Ctrl_TootipManager.Instance.UICanvas;
+        hub.transform.position = Camera.main.WorldToScreenPoint(this.transform.position) + offset;
+        hub.GetComponent<Text>().text = "-" + hurtNumber;
+        hub.GetComponent<View_HubText>().ShowHud();
     }
 }
